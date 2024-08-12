@@ -6,10 +6,14 @@
 <div *ngIf="roleName === 'BUSINESS'">
     <app-addcargo></app-addcargo>
   </div>
-  <div *ngIf="roleName === 'BUSINESS'"></div>
+  <div *ngIf="roleName === 'DRIVER'">
     <app-assgin-cargo></app-assgin-cargo>
-<!-- <div *ngIf="roleName === 'TRAVELLER'">
-    <app-addreview></app-addreview>
-    <app-view-review></app-view-review>
+
   </div>
-  <app-view-destination></app-view-destination> -->
+
+  <div *ngIf="roleName === 'CUSTOMER'">
+    <app-viewcargostatus></app-viewcargostatus>
+
+  </div>
+    
+    
