@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   IsLoggin:any=false;
-  roleName: string | null;
+  roleName!: string | null;
   constructor(private authService: AuthService, private router:Router)
   {
     debugger;
