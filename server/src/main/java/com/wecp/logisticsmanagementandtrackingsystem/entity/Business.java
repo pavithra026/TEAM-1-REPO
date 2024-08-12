@@ -17,7 +17,6 @@ public class Business {
     private String name;
     private String email;
 
-    // Other business-related properties
 
     @OneToMany(mappedBy = "business")
     @JsonIgnore

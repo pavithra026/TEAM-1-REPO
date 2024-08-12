@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
-  { path: 'addcargo', component: AddcargoComponent },  
-  { path: 'asgin-cargo', component: AssginCargoComponent },  
+  { path: 'addcargo', component: RegistrationComponent},  
+  { path: 'assgin-cargo', component: AssginCargoComponent },  
   { path: 'viewcargostatus', component: ViewcargostatusComponent },  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 

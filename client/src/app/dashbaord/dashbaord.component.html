@@ -1,3 +1,15 @@
 <div class="row text-center">
 <h1 class="text-capitalize">Welcome to Logistic Management System</h1>
 </div>
+
+
+<div *ngIf="roleName === 'BUSINESS'">
+    <app-addcargo></app-addcargo>
+  </div>
+  <div *ngIf="roleName === 'BUSINESS'"></div>
+    <app-assgin-cargo></app-assgin-cargo>
+<!-- <div *ngIf="roleName === 'TRAVELLER'">
+    <app-addreview></app-addreview>
+    <app-view-review></app-view-review>
+  </div>
+  <app-view-destination></app-view-destination> -->

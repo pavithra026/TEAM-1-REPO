@@ -26,6 +26,7 @@ public class BusinessController {
     private DriverService driverService;
 
     @PostMapping("/api/business/cargo")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<Cargo> addCargo(@RequestBody Cargo cargo) {
         Cargo addedCargo = cargoService.addCargo(cargo);
         return new ResponseEntity<>(addedCargo, HttpStatus.OK);

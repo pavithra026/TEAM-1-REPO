@@ -1,1 +1,21 @@
-//todo: complete missing code.
+<div>
+    <h2>Cargo Status</h2>
+    <form>
+    <div class="form-group">
+    <label for="cargoId">Cargo ID:</label>
+    <input type="text" id="cargoId" [(ngModel)]="cargoIdMd">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="search()">Search</button>
+    </form>
+ 
+ <div *ngIf="showError">
+        <p class="error">{{ errorMessage }}</p>
+        </div>
+   
+   
+    <div *ngFor="let cargo of cargoIdMd">
+     <p>Cargo Id: {{ cargo.cargoId }}</p>
+     <p>Delivery Status: {{ cargo.status }}</p>
+    </div>
+</div>
+ 
