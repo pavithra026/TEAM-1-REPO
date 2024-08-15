@@ -16,4 +16,8 @@ public class BusinessService {
     public Business registerBusiness(Business business) {
         return businessRepository.save(business);
     }
+
+    public Business getBusinessByUsername(String username) {
+        return businessRepository.findByName(username);
+    }
 }

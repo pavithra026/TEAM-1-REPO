@@ -21,6 +21,7 @@ public class Business {
     @OneToMany(mappedBy = "business")
     @JsonIgnore
     private List<Cargo> cargos;
+    
 
     public Long getId() {
         return id;

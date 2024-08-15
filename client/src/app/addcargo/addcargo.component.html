@@ -1,93 +1,18 @@
-<!-- <div class="container">
-  <h2>Add Cargo</h2>
 
-  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="content">Cargo Content:</label>
-      <input id="content" formControlName="content" class="form-control" />
-      <div *ngIf="itemForm.get('content')?.hasError('required') && itemForm.get('content')?.touched " class="text-danger">
-        Cargo content is required.
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="size">Cargo Size:</label>
-      <input id="size" formControlName="size" class="form-control" />
-      <div *ngIf="itemForm.get('size')?.hasError('required') && itemForm.get('size')?.touched "  class="text-danger">
-        Cargo size is required.
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="status">Cargo Status:</label>
-      <select id="status" formControlName="status" class="form-control">
-        <option value="" disabled>Select status</option>
-        <option value="PENDING">Pending</option>
-        <option value="IN_TRANSIT">In Transit</option>
-        <option value="DELIVERED">Delivered</option>
-      </select>
-      <div *ngIf="itemForm.get('size')?.hasError('required') && itemForm.get('size')?.touched " class="text-danger">
-        Cargo status is required.
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Add Cargo</button>
-
-    <div *ngIf="showMessage" class="alert alert-success mt-2">
-      {{ responseMessage }}
-    </div>
-
-    <div *ngIf="showError" class="alert alert-danger mt-2">
-      {{ errorMessage }}
-    </div>
-  </form>
-
-  <hr>
-
-  <h3>Assign Driver to Cargo</h3>
-  <form (ngSubmit)="assignDriver()">
-    <div class="form-group">
-      <label for="cargoId">Cargo ID:</label>
-      <input id="cargoId" [(ngModel)]="assignModel.cargoId" name="cargoId" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="driverId">Driver ID:</label>
-      <input id="driverId" [(ngModel)]="assignModel.driverId" name="driverId" class="form-control" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Assign Driver</button>
-
-    <div *ngIf="showMessage" class="alert alert-success mt-2">
-      {{ responseMessage }}
-    </div>
-
-    <div *ngIf="showError" class="alert alert-danger mt-2">
-      {{ errorMessage }}
-    </div>
-  </form>
-</div> -->
-
-
-
-
-
-
-<div class="d-flex justify-content-between mt-4">
-  <h2 class="mb-0">Manage Cargo</h2>  
+<div class="d-flex justify-content-between mt-4"> 
 
 </div>
 <div class="row mt-3">
   <div class="card">
       <div class="card-header">
-      Add New Cargo
+      Create New Shipment
         </div>
       <div class="card-body">
           <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
               <div class="row">
                   <div class="col-md-3">
                       <div class="mb-3">
-                          <label for="content" class="form-label ">Content</label>
+                          <label for="content" class="form-label ">Product Detail</label>
                           <input type="content" name ="content"formControlName="content" [(ngModel)]="formModel.content" class="form-control" id="content" placeholder="Content">
                           <div *ngIf="itemForm.controls['content'].invalid && (itemForm.controls['content'].dirty || itemForm.controls['content'].touched)"
                           class="ng-dirty">
@@ -100,7 +25,7 @@
                   <div class="col-md-3">
                       <div class="mb-3">
                           <label for="size" class="form-label ">Size</label>
-                          <input type="size" name="size"  formControlName="size" [(ngModel)]="formModel.size" class="form-control" id="size" placeholder="Size">
+                          <input type="number" name="size"  formControlName="size" [(ngModel)]="formModel.size" class="form-control" id="size" placeholder="Size">
                           <div *ngIf="itemForm.controls['size'].invalid && (itemForm.controls['size'].dirty || itemForm.controls['size'].touched)"
                           class="ng-dirty">
                           <span *ngIf="itemForm.controls['size'].errors">
@@ -114,9 +39,9 @@
                           <label for="status" class="form-label ">Status</label>
                           <select [(ngModel)]="formModel.status" formControlName="status"  class="form-control" name="" id="">
                             <option value="null">Choose Status</option>
-                             <option value="Order Delivered">Order Delivered</option>
                              <option value="Order Assigned">Order Assigned</option>
-                             <option value="Order Delivered">Order Delivered</option>
+                             <option value="Order Assigned">On Hold</option>
+                             <option value="Order Assigned">Cancelled</option>
                           </select>
                           <!-- <input type="text" name="status"  formControlName="status" [(ngModel)]="formModel.status" class="form-control" id="status" placeholder="status"> -->
                           <div *ngIf="itemForm.controls['status'].invalid && (itemForm.controls['status'].dirty || itemForm.controls['status'].touched)"
@@ -127,6 +52,65 @@
                         </div>
                         </div>
                   </div>
+                  <div class="col-md-3">
+                    <div class="mb-3">
+                      <label for="senderName" class="form-label">Sender Name</label>
+                      <input type="text" name="senderName" formControlName="senderName" [(ngModel)]="formModel.senderName" class="form-control" id="senderName" placeholder="Sender Name">
+                      <div *ngIf="itemForm.controls['senderName'].invalid && (itemForm.controls['senderName'].dirty || itemForm.controls['senderName'].touched)">
+                        <span *ngIf="itemForm.controls['senderName'].errors">
+                          <span class="text-danger">Please enter sender name.</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label ">Recepient Name</label>
+                        <input type="text" name ="customerName" formControlName="customerName" [(ngModel)]="formModel.customerName" class="form-control" id="customerName" placeholder="customer Name">
+                        <div *ngIf="itemForm.controls['customerName'].invalid && (itemForm.controls['customerName'].dirty || itemForm.controls['customerName'].touched)"
+                        class="ng-dirty">
+                        <span *ngIf="itemForm.controls['customerName'].errors">
+                          <span class="text-danger">Please Enter Recepient Name .</span>
+                        </span>
+                      </div>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="pickupAddress" class="form-label">Pickup Address</label>
+                    <input type="text" name="pickupAddress" formControlName="pickupAddress" [(ngModel)]="formModel.pickupAddress" class="form-control" id="pickupAddress" placeholder="Pickup Address">
+                    <div *ngIf="itemForm.controls['pickupAddress'].invalid && (itemForm.controls['pickupAddress'].dirty || itemForm.controls['pickupAddress'].touched)">
+                      <span *ngIf="itemForm.controls['pickupAddress'].errors">
+                        <span class="text-danger">Please enter pickup address.</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                      <label for="estimatedDeliveryDate" class="form-label">Estimated Delivery Date</label>
+                      <input type="date" name="estimatedDeliveryDate" formControlName="estimatedDeliveryDate" class="form-control" id="estimatedDeliveryDate">
+                      <div *ngIf="itemForm.controls['estimatedDeliveryDate'].invalid && (itemForm.controls['estimatedDeliveryDate'].dirty || itemForm.controls['estimatedDeliveryDate'].touched)"
+                      class="ng-dirty">
+                      <span *ngIf="itemForm.controls['estimatedDeliveryDate'].errors">
+                        <span class="text-danger">Please select an estimated delivery date.</span>
+                      </span>
+                    </div>
+                  </div>
+              </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="deliveryAddress" class="form-label">Delivery Address</label>
+                        <input type="text" name="deliveryAddress" formControlName="deliveryAddress" class="form-control" id="deliveryAddress" placeholder="Delivery Address">
+                        <div *ngIf="itemForm.controls['deliveryAddress'].invalid && (itemForm.controls['deliveryAddress'].dirty || itemForm.controls['deliveryAddress'].touched)"
+                        class="ng-dirty">
+                        <span *ngIf="itemForm.controls['deliveryAddress'].errors">
+                          <span class="text-danger">Please enter a delivery address.</span>
+                        </span>
+                      </div>
+                    </div>
+                </div>
+                  
                   <div class="col-md-3">
                       <div class="d-grid">
                           <br>
@@ -151,7 +135,7 @@
           <table class="table">
               <thead>
                   <tr>
-                      <th>Sr#</th>
+                      <th>S.No</th>
                       <th>Content</th>
                       <th>Size</th>
                       <th>Status</th>

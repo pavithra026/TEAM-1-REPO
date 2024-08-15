@@ -2,18 +2,18 @@ package com.wecp.logisticsmanagementandtrackingsystem.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
+
 @Entity
 @Table(name="customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String email;
-
-    // Other business-related properties
-
 
     public Long getId() {
         return id;
