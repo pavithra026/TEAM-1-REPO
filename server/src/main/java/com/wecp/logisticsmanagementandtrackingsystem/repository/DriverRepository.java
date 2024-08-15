@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DriverRepository  extends JpaRepository<Driver,Long>{
 
-    
+    Driver findByUserId(Long userId);
     // extend jpa repository and add custom methods if needed
 
 

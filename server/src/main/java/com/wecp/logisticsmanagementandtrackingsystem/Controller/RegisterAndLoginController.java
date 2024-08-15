@@ -65,6 +65,7 @@ public class RegisterAndLoginController {
             Driver driver = new Driver();
             driver.setName(registeredUser.getUsername());
             driver.setEmail(user.getEmail());
+            driver.setUser(user);
             return ResponseEntity.ok(driverService.createDriver(driver));
         }
     }
@@ -84,7 +85,7 @@ public class RegisterAndLoginController {
 
         User user = userService.getUserByUsername(loginRequest.getUsername());
 
-        return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmail(), user.getRole()));
+        return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmail(), user.getRole(), user.getId()));
     }
 
 

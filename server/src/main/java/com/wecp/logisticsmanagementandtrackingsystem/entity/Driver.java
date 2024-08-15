@@ -23,6 +23,10 @@ public class Driver {
     @JsonIgnore
     private List<Cargo> assignedCargos;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -53,5 +57,13 @@ public class Driver {
 
     public void setAssignedCargos(List<Cargo> assignedCargos) {
         this.assignedCargos = assignedCargos;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

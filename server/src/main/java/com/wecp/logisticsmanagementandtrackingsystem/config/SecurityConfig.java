@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.POST, "/api/business/assign-cargo").hasAuthority("BUSINESS")
                 .antMatchers(HttpMethod.GET, "/api/driver/cargo").hasAuthority("DRIVER")
+                .antMatchers(HttpMethod.GET, "/api/driver/getDriverId").hasAuthority("DRIVER")
                 .antMatchers(HttpMethod.PUT, "/api/driver/update-cargo-status").hasAuthority("DRIVER")
                 .antMatchers(HttpMethod.GET, "/api/customer/cargo-status").hasAuthority("CUSTOMER")
                 .anyRequest().authenticated()

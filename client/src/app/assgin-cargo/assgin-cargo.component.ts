@@ -1,63 +1,4 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { HttpService } from '../../services/http.service';
-// import { AuthService } from '../../services/auth.service';
-// import { Observable } from 'rxjs';
- 
-// @Component({
-//   selector: 'app-assgin-cargo',
-//   templateUrl: './assgin-cargo.component.html',
-//   styleUrls: ['./assgin-cargo.component.scss']
-// })
-// export class AssginCargoComponent implements OnInit{
-//   //todo: complete missing code..
-//   showError:any;
-//   errorMessage:any;
-//   cargList:any=[{}];
-//   statusModel: any={};
-//   showMessage: any;
-//   responseMessage: any;
-//   driverId:any;
-  
 
- 
-//   constructor(private formBuilder: FormBuilder,
-//     private router: Router,
-//     private activateRoute:ActivatedRoute,
-//     private httpService: HttpService,
-//     private authService: AuthService) { }
-//   ngOnInit(): void {
-//    this.getAssginCargo();
-//   }
- 
-//   getAssginCargo() {
-//     this.cargList=[]
-//     this.httpService.getAssignOrders(1).subscribe((data: any) => {
-//       this.cargList = data;
-//     }, (error: any) => {
-//       this.showError = true;
-//       this.errorMessage = 'Error fetching cargo data';
-//     });
-//   }
-//   assignDriver(): void {
-//     this.httpService.assignDriver(this.assignModel.driverId,this.assignModel.cargoId).subscribe((response: any) => {
-//       this.showMessage = 'Driver assigned successfully!';
-//     }, (error: any) => {
-//       this.showError = true;
-//       this.errorMessage = error.message;
-//     });
-//   }
-//   addStatus(value: any): void {
-//     this.showError = false;
-//     this.httpService.updateCargoStatus(value.cargoId, value.newStatus).subscribe((response: any) => {
-//       this.showMessage = 'Cargo status updated successfully!';
-//     }, (error: any) => {
-//       this.showError = true;
-//       this.errorMessage = 'Failed to update cargo status.';
-//     });
-//   }
-// }
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -78,17 +19,37 @@ export class AssginCargoComponent {
   statusModel: any={};
   showMessage: any;
   responseMessage: any;
+  driverId: any = null;
+  userId: number | null = null;
  
   constructor(public router:Router, public httpService:HttpService, private formBuilder: FormBuilder, private authService:AuthService)
   {
   }
   ngOnInit(): void {
-   this.getAssginCargo();
+    const userIdString = this.authService.getId; // Retrieve the user ID as a string
+    this.userId = userIdString ? parseInt(userIdString, 10) : null; // Retrieve the user ID
+    if (this.userId) {
+      this.getDriverIdByUserId(this.userId); // Retrieve the driver ID
+    }
    this.statusModel.newStatus=null;
+  }
+  getDriverIdByUserId(userId: number): void {
+    this.httpService.getDriverIdByUserId(userId).subscribe(
+      (id: number) => {
+        this.driverId = id; // Set the driver ID
+        console.log('Driver ID from my method:', this.driverId);
+        this.getAssginCargo()
+      },
+      (error) => {
+        // this.showError = true;
+        // this.errorMessage = 'Error fetching driver ID';
+      }
+    );
   }
   getAssginCargo() {
     this.cargList=[];
-    this.httpService.getAssignOrders(1).subscribe((data: any) => {
+    console.log("Before passing driver id:", this.driverId)
+    this.httpService.getAssignOrders(this.driverId).subscribe((data: any) => {
       this.cargList=data;
       console.log(this.cargList);
     }, error => {
