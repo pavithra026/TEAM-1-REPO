@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-assgin-cargo',
   templateUrl: './assgin-cargo.component.html',
-  styleUrls: ['./assgin-cargo.component.scss']
+  styleUrls: ['./assgin-cargo.component.css']
 })
 export class AssginCargoComponent {
  
@@ -21,6 +21,9 @@ export class AssginCargoComponent {
   responseMessage: any;
   driverId: any = null;
   userId: number | null = null;
+  paginatedCargoList: any = []; // This will hold the items for the current page
+  currentPage: number = 1; // Current page number
+  itemsPerPage: number = 3; // Number of items per page
  
   constructor(public router:Router, public httpService:HttpService, private formBuilder: FormBuilder, private authService:AuthService)
   {
@@ -51,6 +54,8 @@ export class AssginCargoComponent {
     console.log("Before passing driver id:", this.driverId)
     this.httpService.getAssignOrders(this.driverId).subscribe((data: any) => {
       this.cargList=data;
+      this.updatePaginatedCargoList(); // Update the paginated list
+
       console.log(this.cargList);
     }, error => {
       // Handle error
@@ -59,6 +64,23 @@ export class AssginCargoComponent {
       console.error('Login error:', error);
     });;
   }
+
+  
+  updatePaginatedCargoList() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedCargoList = this.cargList.slice(startIndex, endIndex);
+  }
+ 
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.updatePaginatedCargoList();
+  }
+ 
+  get totalPages(): number {
+    return Math.ceil(this.cargList.length / this.itemsPerPage);
+  }
+ 
   addStatus(value:any)
   {
     this.statusModel.cargoId=value.id

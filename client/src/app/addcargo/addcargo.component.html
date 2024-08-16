@@ -26,12 +26,12 @@
                       <div class="mb-3">
                           <label for="size" class="form-label ">Size</label>
                           <input type="number" name="size"  formControlName="size" [(ngModel)]="formModel.size" class="form-control" id="size" placeholder="Size">
-                          <div *ngIf="itemForm.controls['size'].invalid && (itemForm.controls['size'].dirty || itemForm.controls['size'].touched)"
-                          class="ng-dirty">
-                          <span *ngIf="itemForm.controls['size'].errors">
-                            <span class="text-danger">Please Enter size .</span>
-                          </span>
-                        </div>
+                          <div *ngIf="itemForm.get('size')?.hasError('required') && itemForm.get('size')?.touched" class="error">
+                            <span class="text-danger">  size is required.</span>
+                          </div>
+                          <div *ngIf="itemForm.get('size')?.hasError('min') && itemForm.get('size')?.dirty" class="error">
+                            <span class="text-danger">size must be greater than 0.</span>
+                          </div>
                         </div>
                   </div>
                   <div class="col-md-3">
@@ -89,13 +89,13 @@
                 <div class="col-md-3">
                   <div class="mb-3">
                       <label for="estimatedDeliveryDate" class="form-label">Estimated Delivery Date</label>
-                      <input type="date" name="estimatedDeliveryDate" formControlName="estimatedDeliveryDate" class="form-control" id="estimatedDeliveryDate">
+                      <input type="date" name="estimatedDeliveryDate" formControlName="estimatedDeliveryDate" class="form-control" id="estimatedDeliveryDate" [min]="minDate">
                       <div *ngIf="itemForm.controls['estimatedDeliveryDate'].invalid && (itemForm.controls['estimatedDeliveryDate'].dirty || itemForm.controls['estimatedDeliveryDate'].touched)"
                       class="ng-dirty">
                       <span *ngIf="itemForm.controls['estimatedDeliveryDate'].errors">
-                        <span class="text-danger">Please select an estimated delivery date.</span>
+                        <span class="text-danger">Please select an estimated Delivery date.</span>
                       </span>
-                    </div>
+                    </div>            
                   </div>
               </div>
                   <div class="col-md-6">
@@ -114,7 +114,10 @@
                   <div class="col-md-3">
                       <div class="d-grid">
                           <br>
-                          <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
+                          <div class="popup">
+                            <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
+                            <span class="popuptext" id="submitPopup">Creating...</span>
+                        </div>
                         </div>
                   </div>
               </div>
@@ -126,6 +129,12 @@
       </div>
   </div>
 </div>
+
+
+
+
+
+
 <div class="row mt-3">
   <div class="card">
       <div class="card-header">Cargo Information</div>
@@ -143,18 +152,38 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let cargo of cargList">
-                      <td>{{cargo.id}}</td>
+                  <tr *ngFor="let cargo of paginatedCargoList">
+                        <td>{{cargo.id}}</td>
                       <td>{{cargo.content}}</td>
                       <td>{{cargo.size}}</td>
                       <td>{{cargo.status}}</td>
                       <td>
-                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-primary"  [disabled]="cargo.assigned">Assign</button>
+                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-primary" [disabled]="cargo.assigned">Assign</button>
                       </td>
                   </tr>
               </tbody>
           </table>
       </div>
+ 
+      <!-- Pagination Controls -->
+      <ul class="pagination">
+          <li [class.disabled]="currentPage === 1" (click)="goToPage(1)">
+              <a href="javascript:void(0)">First</a>
+          </li>
+          <li [class.disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+              <a href="javascript:void(0)">Previous</a>
+          </li>
+          <li *ngFor="let page of [].constructor(totalPages); let i = index"
+[class.active]="i + 1 === currentPage" (click)="goToPage(i + 1)">
+              <a href="javascript:void(0)">{{i + 1}}</a>
+          </li>
+          <li [class.disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+              <a href="javascript:void(0)">Next</a>
+          </li>
+          <li [class.disabled]="currentPage === totalPages" (click)="goToPage(totalPages)">
+              <a href="javascript:void(0)">Last</a>
+          </li>
+      </ul>
   </div>
   
 </div>

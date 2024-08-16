@@ -12,16 +12,15 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component:DashbaordComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
   { path: 'addcargo', component: RegistrationComponent},  
   { path: 'assgin-cargo', component: AssginCargoComponent },  
   { path: 'viewcargostatus', component: ViewcargostatusComponent },  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-
-  // { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
   {path :'**', component: ErrorPageComponent}
+  // { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
+  
 ];
 
 @NgModule({
