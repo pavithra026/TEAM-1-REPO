@@ -2,6 +2,7 @@ package com.wecp.logisticsmanagementandtrackingsystem.service;
 
 
 import com.wecp.logisticsmanagementandtrackingsystem.entity.User;
+import com.wecp.logisticsmanagementandtrackingsystem.exception.UserExistsException;
 import com.wecp.logisticsmanagementandtrackingsystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,10 +24,17 @@ public class UserService implements UserDetailsService {
 
 
     public User registerUser(User user) {
+        if(userRepository.existsByEmail(user.getEmail())){
+            throw new UserExistsException("User alreay exists with the email "+user.getEmail() + " Please try some other credentials.");
+        }else if (userRepository.existsByUsername(user.getUsername())){
+            throw new UserExistsException("User alreay exists with the username "+user.getUsername() + " Please try some other credentials.");
+        }
+        else{
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+        }
     }
-
+    
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }

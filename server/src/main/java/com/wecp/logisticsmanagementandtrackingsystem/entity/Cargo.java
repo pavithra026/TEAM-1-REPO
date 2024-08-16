@@ -21,6 +21,15 @@ public class Cargo {
     private String estimatedDeliveryDate;
     private String customerName;
     private String senderName;
+    private boolean assigned; // New field to track assignment status
+ 
+    public boolean isAssigned() {
+        return assigned;
+    }
+ 
+    public void setAssigned(boolean assigned) {
+        this.assigned = assigned;
+    }
 
     public String getPickupAddress() {
         return pickupAddress;

@@ -101,7 +101,11 @@ export class AddcargoComponent implements OnInit {
       this.httpService.assignDriver(this.assignModel.driverId,this.assignModel.cargoId).subscribe((data: any) => {
         debugger;
         this.showMessage = true;
-        this.responseMessage=data.message;;
+        this.responseMessage=data.message;
+        const cargo = this.cargList.find((c: { id: any; }) => c.id === this.assignModel.cargoId);
+        if (cargo) {
+          cargo.assigned = true;
+        }
       }, error => {
         // Handle error
         this.showError = true;

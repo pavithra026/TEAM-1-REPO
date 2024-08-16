@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { AssginCargoComponent } from './assgin-cargo/assgin-cargo.component';
 import { ViewcargostatusComponent } from './viewcargostatus/viewcargostatus.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', component:DashbaordComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
   { path: 'addcargo', component: RegistrationComponent},  
@@ -18,7 +20,8 @@ const routes: Routes = [
   { path: 'viewcargostatus', component: ViewcargostatusComponent },  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
+  {path :'**', component: ErrorPageComponent}
 ];
 
 @NgModule({

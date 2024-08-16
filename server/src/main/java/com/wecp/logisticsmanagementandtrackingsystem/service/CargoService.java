@@ -55,6 +55,7 @@ public class CargoService {
                 .orElseThrow(() -> new EntityNotFoundException("Driver not found with id: " + driverId));
 
         cargo.setDriver(driver);
+        cargo.setAssigned(true);
         cargoRepository.save(cargo);
         return true;
     }

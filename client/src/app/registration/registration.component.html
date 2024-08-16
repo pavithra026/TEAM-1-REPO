@@ -70,6 +70,9 @@
               <div *ngIf="showMessage" class="alert alert-success mt-4" role="alert">
                 {{responseMessage}}
               </div>
+              <div *ngIf="showError" class="alert alert-danger mt-4" role="alert">
+                {{errorMessage}}
+              </div>
             </div>
           </div>
         </div>

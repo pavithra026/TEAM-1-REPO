@@ -149,7 +149,7 @@
                       <td>{{cargo.size}}</td>
                       <td>{{cargo.status}}</td>
                       <td>
-                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-primary">Assign</button>
+                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-primary"  [disabled]="cargo.assigned">Assign</button>
                       </td>
                   </tr>
               </tbody>

@@ -15,6 +15,8 @@ export class RegistrationComponent implements OnInit {
   formModel: any = { role: null, email: '', password: '', username: '' };
   showMessage: boolean = false;
   responseMessage: any;
+  showError:boolean=false;
+  errorMessage:any;
 
   constructor(public router:Router, private httpService:HttpService, private formBuilder: FormBuilder) { 
     
@@ -28,18 +30,20 @@ export class RegistrationComponent implements OnInit {
 
 ngOnInit(): void {
 }
+
 onRegister()
 {
   if(this.itemForm.valid)
-  {
+  {this.showError=false;
     this.showMessage=false;
-    this.httpService.registerUser(this.itemForm.value).subscribe(data=>{    
-      debugger;
+    this.httpService.registerUser(this.itemForm.value).subscribe(data=>{
       this.showMessage=true;
       this.responseMessage='Welcome '+data.name +" you are successfully registered";
       this.itemForm.reset();
       
-    },error=>{ })
+    },error=>{
+      this.showError=true;
+      this.errorMessage=error.error})
   }
   else{
     this.itemForm.markAllAsTouched();

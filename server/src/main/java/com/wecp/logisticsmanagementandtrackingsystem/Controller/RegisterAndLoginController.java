@@ -7,6 +7,7 @@ import com.wecp.logisticsmanagementandtrackingsystem.entity.Business;
 import com.wecp.logisticsmanagementandtrackingsystem.entity.Customer;
 import com.wecp.logisticsmanagementandtrackingsystem.entity.Driver;
 import com.wecp.logisticsmanagementandtrackingsystem.entity.User;
+import com.wecp.logisticsmanagementandtrackingsystem.exception.UserExistsException;
 import com.wecp.logisticsmanagementandtrackingsystem.jwt.JwtUtil;
 import com.wecp.logisticsmanagementandtrackingsystem.service.BusinessService;
 import com.wecp.logisticsmanagementandtrackingsystem.service.CustomerService;
@@ -19,6 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,14 +63,18 @@ public class RegisterAndLoginController {
             customer.setName(registeredUser.getUsername());
             customer.setEmail(user.getEmail());
             return ResponseEntity.ok(customerService.createCustomer(customer));
-        } else {
+        } else if (registeredUser.getRole().equals("DRIVER")){
             Driver driver = new Driver();
             driver.setName(registeredUser.getUsername());
             driver.setEmail(user.getEmail());
             driver.setUser(user);
             return ResponseEntity.ok(driverService.createDriver(driver));
         }
+        return ResponseEntity.ok().body("User alreay exists! Please try another .");
+        
     }
+
+
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
@@ -86,6 +92,11 @@ public class RegisterAndLoginController {
         User user = userService.getUserByUsername(loginRequest.getUsername());
 
         return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmail(), user.getRole(), user.getId()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> userExistsException(UserExistsException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 

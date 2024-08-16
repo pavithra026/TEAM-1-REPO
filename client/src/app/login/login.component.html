@@ -1,4 +1,4 @@
-<div class="vh-100 d-flex justify-content-center align-items-center">
+<!-- <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
@@ -47,4 +47,70 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <div class="login-dark">
+      
+        <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
+          <div class="form-container">
+            <h2 class="sr-only">Login Form</h2>
+          <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+          <div class="form-group">
+            <input class="form-control" type="username" name ="username"formControlName="username" [(ngModel)]="formModel.username" class="form-control" id="username" placeholder="Username">
+            <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
+                class="ng-dirty">
+                <span *ngIf="itemForm.controls['username'].errors">
+                  <small class="text-danger">*username is required</small>
+                </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="Password">
+            <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
+                class="ng-dirty">
+                <span *ngIf="itemForm.controls['password'].errors">
+                  <small class="text-danger">*password is required</small>
+                </span>
+              </div>
+          </div>
+          <div class="form-group">
+            <!-- <button class="btn btn-primary btn-block" type="submit">Log In</button> -->
+           
+<button class="animated-button" type="submit">
+  <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+  <span class="text">Login</span>
+  <span class="circle"></span>
+  <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+</button>
+
+          </div>
+          <p class="forgot">Don't have an account? <a (click)="registration()"><u>Sign In</u></a></p>
+          <div *ngIf="showError" class="alert alert-danger" role="alert">
+            {{errorMessage}}
+          </div>
+          </div>
+          
+       </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
