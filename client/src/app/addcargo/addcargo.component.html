@@ -1,12 +1,8 @@
-
-<div class="d-flex justify-content-between mt-4"> 
-
-</div>
-<div class="row mt-3">
-  <div class="card">
-      <div class="card-header">
+<div class="container mt-3">
+  <div class="card mb-4">
+    <div class="card-header bg-info text-white">
       Create New Shipment
-        </div>
+    </div>
       <div class="card-body">
           <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
               <div class="row">
@@ -40,10 +36,10 @@
                           <select [(ngModel)]="formModel.status" formControlName="status"  class="form-control" name="" id="">
                             <option value="null">Choose Status</option>
                              <option value="Order Assigned">Order Assigned</option>
-                             <option value="Order Assigned">On Hold</option>
+                             <option value="Order Pending">Pending</option>
                              <option value="Order Assigned">Cancelled</option>
                           </select>
-                          <!-- <input type="text" name="status"  formControlName="status" [(ngModel)]="formModel.status" class="form-control" id="status" placeholder="status"> -->
+                      
                           <div *ngIf="itemForm.controls['status'].invalid && (itemForm.controls['status'].dirty || itemForm.controls['status'].touched)"
                           class="ng-dirty">
                           <span *ngIf="itemForm.controls['status'].errors">
@@ -115,7 +111,7 @@
                       <div class="d-grid">
                           <br>
                           <div class="popup">
-                            <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
+                            <button class="btn btn-outline-dark mt-1"  [disabled]="itemForm.invalid" type="submit">Submit</button>
                             <span class="popuptext" id="submitPopup">Creating...</span>
                         </div>
                         </div>
@@ -127,17 +123,13 @@
              
             </form>
       </div>
-  </div>
 </div>
 
 
 
 
-
-
-<div class="row mt-3">
-  <div class="card">
-      <div class="card-header">Cargo Information</div>
+  <div class="card mb-4">
+      <div class="card-header bg-info text-white">Cargo Information</div>
   </div>
   <div class="card-body">
       <div class="table-responsive">
@@ -158,14 +150,14 @@
                       <td>{{cargo.size}}</td>
                       <td>{{cargo.status}}</td>
                       <td>
-                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-primary" [disabled]="cargo.assigned">Assign</button>
+                          <button data-bs-toggle="modal" (click)="addDriver(cargo)" data-bs-target="#driverModal" class="btn btn-info text-white" [disabled]="cargo.assigned">Assign</button>
                       </td>
                   </tr>
               </tbody>
           </table>
       </div>
  
-      <!-- Pagination Controls -->
+
       <ul class="pagination">
           <li [class.disabled]="currentPage === 1" (click)="goToPage(1)">
               <a href="javascript:void(0)">First</a>
@@ -217,3 +209,6 @@
     </div>
   </div>
 </div>
+
+
+

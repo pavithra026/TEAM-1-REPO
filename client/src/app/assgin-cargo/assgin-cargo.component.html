@@ -1,10 +1,9 @@
 <div class="d-flex justify-content-between mt-4">
-  <h2 class="mb-0">Manage Cargo</h2>  
+  <h2 class="mb-0"></h2>  
 </div>
-
-<div class="row mt-4">
-  <div class="card">
-      <div class="card-header">Cargo for delivery</div>
+<div class="container mt-3">
+  <div class="card mb-4">
+      <div class="card-header bg-info text-white">Shipments Assigned</div>
   </div>
   <div id="DataTable" class="card-body">
       <div class="table-responsive">
@@ -25,7 +24,7 @@
                       <td>{{cargo.size}}</td>
                       <td>{{cargo.status}}</td>
                       <td>
-                          <button data-bs-toggle="modal" (click)="addStatus(cargo)" data-bs-target="#driverModal" class="btn btn-primary">Update Status</button>
+                          <button data-bs-toggle="modal" (click)="addStatus(cargo)" data-bs-target="#driverModal" class="btn btn-info text-white">Update Status</button>
                       </td>
                   </tr>
               </tbody>
@@ -86,4 +85,4 @@
         </div>
       </div>
     </div>
-  </div>
+</div>

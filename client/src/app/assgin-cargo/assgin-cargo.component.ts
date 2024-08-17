@@ -35,6 +35,7 @@ export class AssginCargoComponent {
       this.getDriverIdByUserId(this.userId); // Retrieve the driver ID
     }
    this.statusModel.newStatus=null;
+   this.getAssginCargo()
   }
   getDriverIdByUserId(userId: number): void {
     this.httpService.getDriverIdByUserId(userId).subscribe(
@@ -59,7 +60,7 @@ export class AssginCargoComponent {
       console.log(this.cargList);
     }, error => {
       // Handle error
-      this.showError = true;
+      // this.showError = true;
       this.errorMessage = "An error occurred while logging in. Please try again later.";
       console.error('Login error:', error);
     });;

@@ -55,10 +55,6 @@ public class Cargo {
     @JoinColumn(name = "driver_id")
     private Driver driver;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -75,14 +71,6 @@ public class Cargo {
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     
 

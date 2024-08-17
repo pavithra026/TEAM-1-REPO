@@ -17,6 +17,7 @@ import { AssginCargoComponent } from './assgin-cargo/assgin-cargo.component';
 import { ViewcargostatusComponent } from './viewcargostatus/viewcargostatus.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GlobalErrorHandler } from '../services/global-error-handler.service';
+import { Navbar } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GlobalErrorHandler } from '../services/global-error-handler.service';
       AddcargoComponent,
       AssginCargoComponent,
       ViewcargostatusComponent,
-      ErrorPageComponent
+      ErrorPageComponent,
+      Navbar
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,13 @@ export class AuthService {
   {
     return localStorage.getItem('role');
   }
+  SetUsername(username:any){
+    localStorage.setItem('username',username)
+  }
+
+  get getUsername ():string|null{
+    return localStorage.getItem('username');
+  }
   SetId(id:any)
   {
     localStorage.setItem('id',id);

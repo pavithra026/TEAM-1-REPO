@@ -39,7 +39,6 @@ public class CargoService {
                 cargo.setBusiness(business);
             }
         }
-        cargo.setCustomer(customerRepository.findByName(cargo.getCustomerName()));
         return cargoRepository.save(cargo);
     }
 

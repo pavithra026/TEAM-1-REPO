@@ -1,0 +1,86 @@
+<!-- <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">LogisticNexuses </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngIf="roleName === 'BUSINESS'">
+                <a class="nav-link" [routerLink]="['/addcargo']">Business</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'DRIVER'">
+                <a class="nav-link" [routerLink]="['/asgin-cargo']">Driver</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'CUSTOMER'">
+                <a class="nav-link" [routerLink]="['/viewcargostatus']">View Status</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="!IsLoggin">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="IsLoggin">
+                <a class="nav-link" (click)="logout()" [routerLink]="['/login']">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">LogisticNexuses </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngIf="roleName === 'BUSINESS'">
+                <a class="nav-link" [routerLink]="['/addcargo']">Business</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'DRIVER'">
+                <a class="nav-link" [routerLink]="['/asgin-cargo']">Driver</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'CUSTOMER'">
+                <a class="nav-link" [routerLink]="['/viewcargostatus']">View Status</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="!IsLoggin">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="IsLoggin">
+                <a class="nav-link" (click)="logout()" [routerLink]="['/login']">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar bg-dark shadow sticky-top px-3">
+    <a class="navbar-brand fst-italic text-white" href="#">Logistics Nexsus</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item text-white" *ngIf="roleName === 'BUSINESS'">
+                <a class="nav-link text-white" [routerLink]="['/addcargo']">Business</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'DRIVER'">
+                <a class="nav-link text-white" [routerLink]="['/assign-cargo']">Driver</a>
+            </li>
+            <li class="nav-item" *ngIf="roleName === 'CUSTOMER'">
+                <a class="nav-link text-white" [routerLink]="['/viewcargostatus']">View Status</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto"> <!-- Use ml-auto (or ms-auto for Bootstrap 5) to align to the right -->
+            <!-- <li class="nav-item" *ngIf="IsLoggin">
+                <span class="navbar-text">Welcome, {{ username }}</span>
+            </li> -->
+            <li class="nav-item" *ngIf="!IsLoggin">
+                <a class="nav-link text-white" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="IsLoggin">
+                <a class="nav-link text-white" (click)="logout()" [routerLink]="['/login']">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,4 +1,4 @@
-<div class="vh-100 d-flex justify-content-center align-items-center">
+<!-- <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
@@ -78,8 +78,211 @@
         </div>
       </div>
     </div>
+  </div> -->
+  
+  
+<!--   
+  <div class="vh-100 d-flex justify-content-center align-items-center bg-light">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class=""></div>
+                <div class="card bg-white shadow-sm">
+                    <div class="card-body p-4"> 
+                        <form class="mb-2 mt-md-3" [formGroup]="itemForm" (ngSubmit)="onRegister()"> 
+                            <h5 class="fw-bold mb-2 text-uppercase text-center">LOGISTICS NEXSUS</h5>
+                            <div class="mb-2"> 
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" formControlName="username" class="form-control form-control-sm" id="username" placeholder="Username"> 
+                                <div *ngIf="itemForm.get('username')?.invalid && (itemForm.get('username')?.dirty || itemForm.get('username')?.touched)" class="ng-dirty">
+                                    <span class="text-danger">Please Enter UserName.</span>
+                                </div>
+                            </div>
+                            <div class="mb-2"> 
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" name="email" formControlName="email" class="form-control form-control-sm" id="email" placeholder="name@example.com"> 
+                                <div *ngIf="itemForm.get('email')?.invalid && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="ng-dirty">
+                                    <span class="text-danger">Please Enter email.</span>
+                                    <span *ngIf="itemForm.errors?.['email']">Not a valid Email</span>
+                                </div>
+                            </div>
+                            <div class="mb-2"> 
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" formControlName="password" class="form-control form-control-sm" id="password" placeholder="*******"> 
+                                <div *ngIf="itemForm.get('password')?.invalid && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="ng-dirty">
+                                    <span class="text-danger">Please Enter password.</span>
+                                </div>
+                            </div>
+                            <div class="mb-2"> 
+                                <label for="role" class="form-label">Role</label>
+                                <select class="form-control form-control-sm" formControlName="role"> 
+                                    <option value="null">Choose Role</option>
+                                    <option value="BUSINESS">BUSINESS</option>
+                                    <option value="DRIVER">DRIVER</option>
+                                    <option value="CUSTOMER">CUSTOMER</option>
+                                </select>
+                                <div *ngIf="itemForm.get('role')?.invalid && (itemForm.get('role')?.dirty || itemForm.get('role')?.touched)" class="ng-dirty">
+                                    <span class="text-danger">Please choose Role.</span>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary btn-sm" type="submit">Submit</button> 
+                            </div>
+                        </form>
+                        <div>
+                            <p class="mb-0 text-center"> Already have an account? <a [routerLink]="['/login']" class="text-primary fw-bold">Login</a></p>
+                        </div>
+                        <div *ngIf="showMessage" class="alert alert-success mt-3" role="alert"> 
+                            {{responseMessage}}
+                        </div>
+                        <div *ngIf="showError" class="alert alert-danger mt-3" role="alert"> 
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="vh-100 d-flex justify-content-center align-items-center bg-light">
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+              <div class="border border-3 border-primary rounded"></div>
+              <div class="card bg-white shadow-lg">
+                  <div class="card-body p-4">
+                      <form class="mb-2 mt-md-3" [formGroup]="itemForm" (ngSubmit)="onRegister()">
+                          <h4 class="fw-bold mb-2 text-uppercase text-center">LOGISTIC MANAGEMENT SYSTEM</h4>
+                          <p class="mb-4 text-center">Please enter your details here</p>
+                          <div class="mb-3">
+                              <label for="username" class="form-label">Username</label>
+                              <input type="text" name="username" formControlName="username" class="form-control form-control-lg rounded-pill shadow-sm" id="username" placeholder="Username">
+                              <div *ngIf="itemForm.get('username')?.invalid && (itemForm.get('username')?.dirty || itemForm.get('username')?.touched)" class="ng-dirty">
+                                  <span class="text-danger">Please Enter UserName.</span>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Email address</label>
+                              <input type="email" name="email" formControlName="email" class="form-control form-control-lg rounded-pill shadow-sm" id="email" placeholder="name@example.com">
+                              <div *ngIf="itemForm.get('email')?.invalid && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="ng-dirty">
+                                  <span class="text-danger">Please Enter email.</span>
+                                  <span *ngIf="itemForm.errors?.['email']">Not a valid Email</span>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="password" class="form-label">Password</label>
+                              <input type="password" name="password" formControlName="password" class="form-control form-control-lg rounded-pill shadow-sm" id="password" placeholder="*******">
+                              <div *ngIf="itemForm.get('password')?.invalid && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="ng-dirty">
+                                  <span class="text-danger">Please Enter password.</span>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="role" class="form-label">Role</label>
+                              <select class="form-control form-control-lg rounded-pill shadow-sm" formControlName="role">
+                                  <option value="null">Choose Role</option>
+                                  <option value="BUSINESS">BUSINESS</option>
+                                  <option value="DRIVER">DRIVER</option>
+                                  <option value="CUSTOMER">CUSTOMER</option>
+                              </select>
+                              <div *ngIf="itemForm.get('role')?.invalid && (itemForm.get('role')?.dirty || itemForm.get('role')?.touched)" class="ng-dirty">
+                                  <span class="text-danger">Please choose Role.</span>
+                              </div>
+                          </div>
+                          <div class="d-grid">
+                              <button class="btn btn-outline-primary btn-lg rounded-pill shadow-sm" type="submit">Submit</button>
+                          </div>
+                      </form>
+                      <div>
+                          <p class="mb-0 text-center"> <a [routerLink]="['/login']" class="text-primary fw-bold">Go to Login</a></p>
+                      </div>
+                      <div *ngIf="showMessage" class="alert alert-success mt-3" role="alert">
+                          {{responseMessage}}
+                      </div>
+                      <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+                          {{errorMessage}}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-  
-  
-  
-  
+</div> -->
+
+<div class="vh-100 d-flex justify-content-center align-items-center bg-light m-0">
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+              <div class=""></div>
+              <div class="card bg-white shadow-sm">
+                  <div class="card-body p-4">
+                      <form class="mb-2 mt-md-3" [formGroup]="itemForm" (ngSubmit)="onRegister()">
+                          <h4 class="fw-bold mb-2 text-uppercase text-center" style="font-size: 1.25rem;">LOGISTIC MANAGEMENT SYSTEM</h4>
+                          <p class="mb-4 text-center" style="font-size: 0.875rem;">Please enter your details here</p>
+                          <div class="mb-3">
+                              <label for="username" class="form-label" style="font-size: 0.875rem;">Username</label>
+                              <input type="text" name="username" formControlName="username" class="form-control form-control-sm rounded-pill shadow-sm" id="username" placeholder="Username">
+                              <div *ngIf="itemForm.get('username')?.invalid && (itemForm.get('username')?.dirty || itemForm.get('username')?.touched)" class="ng-dirty">
+                                  <span class="text-danger" style="font-size: 0.75rem;">Please Enter UserName.</span>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label" style="font-size: 0.875rem;">Email address</label>
+                              <input type="email" name="email" formControlName="email" class="form-control form-control-sm rounded-pill shadow-sm" id="email" placeholder="name@example.com">
+                              <div *ngIf="itemForm.get('email')?.hasError('required') && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="ng-dirty">
+                                  <span class="text-danger" style="font-size: 0.75rem;">Please Enter email.</span>
+                              </div>
+                              <div>
+                              <small
+                                *ngIf="itemForm.get('email')?.hasError('invalidEmail') &&  itemForm.get('email')?.dirty && itemForm.get('email')?.touched "
+                                class="text-danger" style="font-size: 0.75rem;">Enter a Valid Email.
+                            </small>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="password" class="form-label" style="font-size: 0.875rem;">Password</label>
+                              <input type="password" name="password" formControlName="password" class="form-control form-control-sm rounded-pill shadow-sm" id="password" placeholder="*******">
+                              <div *ngIf="itemForm.get('password')?.hasError('required') && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="ng-dirty">
+                                  <span class="text-danger" style="font-size: 0.75rem;">Please Enter password.</span>
+                              </div>
+                            <div>
+                            <span 
+                              *ngIf="itemForm.get('password')?.invalid &&  itemForm.get('password')?.dirty && itemForm.get('password')?.errors?.['invalidPassword'] "
+                              class="text-danger" style="font-size: 0.75rem;">Password should contain minimum 8 characters, 1 uppercase, 1 lowercase, 1 digit, 1 special character.
+                            </span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="role" class="form-label" style="font-size: 0.875rem;">Role</label>
+                              <select class="form-control form-control-sm rounded-pill shadow-sm" formControlName="role">
+                                  <option value="null">Choose Role</option>
+                                  <option value="BUSINESS">BUSINESS</option>
+                                  <option value="DRIVER">DRIVER</option>
+                                  <option value="CUSTOMER">CUSTOMER</option>
+                              </select>
+                              <div *ngIf="itemForm.get('role')?.invalid && (itemForm.get('role')?.dirty || itemForm.get('role')?.touched)" class="ng-dirty">
+                                  <span class="text-danger" style="font-size: 0.75rem;">Please choose Role.</span>
+                              </div>
+                          </div>
+                          <div class="d-grid">
+                              <button class="btn btn-outline-primary btn-sm rounded-pill shadow-sm" type="submit">Submit</button>
+                          </div>
+                      </form>
+                      <div>
+                          <p class="mb-0 text-center" style="font-size: 0.875rem;">Already have an account? <a [routerLink]="['/login']" class="text-primary fw-bold">Login</a></p>
+                      </div>
+                      <div *ngIf="showMessage" class="alert alert-success mt-3" role="alert" style="font-size: 0.875rem;">
+                          {{responseMessage}}
+                      </div>
+                      <div *ngIf="showError" class="alert alert-danger mt-3" role="alert" style="font-size: 0.875rem;">
+                          {{errorMessage}}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
