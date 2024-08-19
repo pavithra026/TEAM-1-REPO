@@ -70,103 +70,110 @@
        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
        <style>
            body {
-               background-color: #f0f2f5;
+               background-color: #f4f4f9;
+               font-family: Arial, sans-serif;
            }
-           .card {
-               border-radius: 15px;
-               overflow: hidden;
-               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-               margin-top: 20px;
+           .container {
+              margin-top: 30px;
            }
-           .card-header {
+           .timeline {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               position: relative;
+               padding: 40px 0;
+               margin: 0 auto;
+               width: 100%;
+               max-width: 1000px;
+           }
+           .timeline::before {
+               content: '';
+               position: absolute;
+               top: 50%;
+               left: 0;
+               right: 0;
+               height: 4px;
+               background-color: #d3d3d3;
+               z-index: 1;
+               transition: background-color 0.3s ease;
+           }
+           .timeline-step {
+               position: relative;
+               text-align: center;
+               width: 20%;
+               z-index: 2;
+           }
+           .timeline-step .dot {
+               width: 24px;
+               height: 24px;
+               background-color: #d3d3d3;
+               border-radius: 50%;
+               margin: 0 auto;
+               transition: background-color 0.3s ease, transform 0.3s ease;
+           }
+           .timeline-step .icon {
+               font-size: 14px;
+               color: #fff;
+               line-height: 24px;
+           }
+           .timeline-step .label {
+               margin-top: 10px;
+               font-size: 14px;
+               color: #555;
+           }
+           .timeline-step.active .dot,
+           .timeline-step.completed .dot {
+               background-color: #28a745;
+               transform: scale(1.2);
+           }
+           .timeline-step.pending .dot {
+               background-color: #ffc107;
+           }
+           .timeline-step.intransit .dot {
                background-color: #17a2b8;
-               color: white;
-               padding: 15px;
-               font-size: 18px;
            }
-           .btn-info {
-               background-color: #17a2b8;
-               border: none;
-               border-radius: 20px;
-               transition: background-color 0.3s;
+           .timeline-step.delivered .dot {
+               background-color: #28a745;
            }
-           .btn-info:hover {
-               background-color: #138496;
+           .timeline .progress {
+               position: absolute;
+               top: 50%;
+               left: 0;
+               height: 4px;
+               background-color: #28a745;
+               z-index: 1;
+               transition: width 0.3s ease;
            }
            .search-bar {
-               border-radius: 20px;
-               overflow: hidden;
-               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-           }
-           .search-bar input {
-               border: none;
-               box-shadow: none;
-               outline: none;
-           }
-           .search-bar button {
-               border-radius: 0;
-           }
-           .status-icon {
-               font-size: 24px;
-               margin-right: 10px;
-           }
-           .table {
-               margin-top: 30px;
-           }
-           .table th {
-               background-color: #17a2b8;
-               color: white;
-           }
-           .table td {
-               vertical-align: middle;
-           }
-           .table .bi-check-circle-fill {
-               color: #28a745;
-           }
-           .table .bi-hourglass-split {
-               color: #ffc107;
-           }
-           .table .bi-truck {
-               color: #17a2b8;
-           }
-           .table .bi-exclamation-circle-fill {
-               color: #dc3545;
-           }
-           .cargo-details {
-               margin-top: 50px;
-           }
-           .cargo-details h5 {
-               font-size: 18px;
-               color: #17a2b8;
                margin-bottom: 20px;
            }
+           .card-body h4 {
+               margin-top: 20px;
+               font-size: 1.2rem;
+           }
            .map-container {
-               height: 400px;
-               background: url('https://via.placeholder.com/800x400') no-repeat center center;
-               background-size: cover;
                margin-top: 30px;
-               border-radius: 15px;
+               height: 300px;
+               background-color: #ddd;
+               border-radius: 10px;
            }
            .footer {
-               margin-top: 50px;
-               padding: 20px;
-               background-color: #343a40;
-               color: white;
                text-align: center;
-               border-radius: 15px;
+               margin-top: 40px;
+               font-size: 0.9rem;
+               color: #888;
            }
        </style>
    </head>
    <body>
-       <div class="container">
-           <div class="card">
-               <div class="card-header">
-                   <i class="bi bi-box-seam"></i> Cargo Status
-               </div>
+   
+       <div class="container mt-3">
+           <!-- Search Bar and Cargo Info -->
+           <div class="card shadow">
                <div class="card-body">
-                   <div class="row mb-4">
+                   <div class="row search-bar">
                        <div class="col-md-8">
-                           <div class="input-group search-bar">
+                           <div class="input-group">
                                <input class="form-control" type="text" [(ngModel)]="cargoIdMd" placeholder="Search Cargo Id">
                                <div class="input-group-append">
                                    <button (click)="search()" class="btn btn-info">
@@ -181,60 +188,58 @@
                            </button>
                        </div>
                    </div>
-                   <table class="table table-bordered table-striped">
-                       <thead>
-                           <tr>
-                               <th scope="col">Cargo Id</th>
-                               <th scope="col">Delivery Status</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           <tr>
-                               <td>{{cargo.cargoId}}</td>
-                               <td>
-                                   <i [ngClass]="{
-                                       'bi bi-check-circle-fill': cargo.status === 'Delivered',
-                                       'bi bi-hourglass-split': cargo.status === 'Pending',
-                                       'bi bi-truck': cargo.status === 'In_Transit',
-                                       'bi bi-exclamation-circle-fill': cargo.status === 'Failed'
-                                   }" class="status-icon"></i>
-                                   {{cargo.status}}
-                               </td>
-                           </tr>
-                       </tbody>
-                   </table>
+                   
+                   <p><strong>Cargo ID: </strong> {{cargo.cargoId}}</p>
+                   <p><strong>Shipment Status: </strong>  <span class="badge bg-info text-white">{{cargo.status}}</span></p>
+                   <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i> {{errorMessage}}
+                </div>
                </div>
            </div>
+   
+           <!-- Timeline -->
+           <div class="timeline">
+            <div class="progress" [style.width]="progressWidth"></div>
+            
+            <div class="timeline-step pending" [class.active]="cargo.status === 'Pending' || cargo.status === 'In Transit' || cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-hourglass-split icon"></i></div>
+                <div class="label">Pending</div>
+            </div>
+            <div class="timeline-step intransit" [class.active]="cargo.status === 'In Transit' || cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-truck icon"></i></div>
+                <div class="label">In Transit</div>
+            </div>
+            <div class="timeline-step delivered" [class.active]="cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-box-seam icon"></i></div>
+                <div class="label">Delivered</div>
+            </div>
+        </div>
+        
    
            <!-- Cargo Details Section -->
-           <div class="cargo-details">
-               <h5><i class="bi bi-info-circle"></i> Cargo Details</h5>
-               <div class="row">
-                   <div class="col-md-6">
-                       <p><strong>Sender Name:</strong> {{cargo.senderName}}</p>
-                       <p><strong>Receiver Name:</strong> {{cargo.receiverName}}</p>
-                       <p><strong>Pickup Address:</strong> {{cargo.pickupAddress}}</p>
-                       <p><strong>Delivery Address:</strong> {{cargo.deliveryAddress}}</p>
-                   </div>
-                   <div class="col-md-6">
-                       <p><strong>Estimated Delivery Date:</strong> {{cargo.estimatedDeliveryDate}}</p>
-                       <p><strong>Weight:</strong> {{cargo.weight}} kg</p>
-                       <p><strong>Dimensions:</strong> {{cargo.dimensions}} cm</p>
-                       <p><strong>Special Instructions:</strong> {{cargo.specialInstructions}}</p>
+           <div class="card shadow mt-4">
+               <div class="card-body">
+                   <h5><i class="bi bi-info-circle"></i> Cargo Details</h5>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <p><strong>Sender Name:</strong> {{cargo.senderName}}</p>
+                           <p><strong>Receiver Name:</strong> {{cargo.receiverName}}</p>
+                           <p><strong>Pickup Address:</strong> {{cargo.pickupAddress}}</p>
+                           <p><strong>Delivery Address:</strong> {{cargo.deliveryAddress}}</p>
+                       </div>
+                       <div class="col-md-6">
+                           <p><strong>Estimated Delivery Date:</strong> {{cargo.estimatedDeliveryDate}}</p>
+                           <p><strong>Weight:</strong> {{cargo.weight}} kg</p>
+                           <p><strong>Dimensions:</strong> {{cargo.dimensions}} cm</p>
+                           <p><strong>Special Instructions:</strong> {{cargo.specialInstructions}}</p>
+                       </div>
                    </div>
                </div>
            </div>
-   
-           <!-- Map Section -->
-           <div class="map-container"></div>
    
            <!-- Footer -->
            <div class="footer">
                <p>&copy; 2024 Cargo Management System. All rights reserved.</p>
-           </div>
-   
-           <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
-               <i class="bi bi-exclamation-triangle-fill"></i> {{errorMessage}}
            </div>
        </div>
    
@@ -243,4 +248,5 @@
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    </body>
    </html>
+   
    

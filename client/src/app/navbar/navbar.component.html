@@ -41,7 +41,7 @@
         </div>
       <ul class="navbar-nav ms-auto justify-content-end mt-2 mt-lg-0">
         <li class="nav-item active" *ngIf="roleName === null || 'BUSINESS' || 'DRIVER' || 'CUSTOMER'">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item" *ngIf="roleName === 'BUSINESS'">
             <a class="nav-link" href="#">New Shipment</a>

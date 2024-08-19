@@ -18,7 +18,7 @@ import { ViewcargostatusComponent } from './viewcargostatus/viewcargostatus.comp
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GlobalErrorHandler } from '../services/global-error-handler.service';
 import { Navbar } from './navbar/navbar.component';
-import { Home } from './home/home.component';
+import { HomeComponent } from './home/home.component';
 import { ShipmentsComponent } from './shipments/shipments.component';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { ShipmentsComponent } from './shipments/shipments.component';
       ViewcargostatusComponent,
       ErrorPageComponent,
       Navbar,
-      Home,
+      HomeComponent,
       ShipmentsComponent
       
       
@@ -42,7 +42,7 @@ import { ShipmentsComponent } from './shipments/shipments.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
   ],
   providers: [HttpService,HttpClientModule  ,{provide:ErrorHandler,useClass:GlobalErrorHandler}],
   bootstrap: [AppComponent]
