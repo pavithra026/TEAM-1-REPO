@@ -60,88 +60,187 @@
     </div>
   </div>
    -->
-
    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargo Status</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .card {
-            margin-top: 20px;
-        }
-        .card-header {
-            /* background-color: #007bff; */
-            color: white;
-        }
-        .btn-primary {
-            background-color: #4c9ef4;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="card-header bg-info d-flex justify-content-between mt-4">
-            <h6 class="mb-0">Cargo Status</h6>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header bg-info">
-                        Search Cargo
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input class="form-control" type="text" [(ngModel)]="cargoIdMd" placeholder="Search Cargo Id">
-                            </div>
-                            <div class="col-md-2">
-                                <button (click)="search()" class="btn btn-info w-100">Search</button>
-                            </div>
-                        </div>
-                        <!-- <div class="mt-5">
-                            <h3>Cargo Id: {{cargo.cargoId}}</h3>
-                            <h3>Delivery Status: {{cargo.status}}</h3>
-                        </div> -->
-                        <div class="mt-5">
-                          <table class="table table-bordered table-striped">
-                              <thead class="thead">
-                                  <tr>
-                                      <th scope="col">Cargo Id</th>
-                                      <th scope="col">Delivery Status</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>{{cargo.cargoId}}</td>
-                                      <td>{{cargo.status}}</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                      
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
-            {{errorMessage}}
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Cargo Status</title>
+       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+       <style>
+           body {
+               background-color: #f0f2f5;
+           }
+           .card {
+               border-radius: 15px;
+               overflow: hidden;
+               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+               margin-top: 20px;
+           }
+           .card-header {
+               background-color: #17a2b8;
+               color: white;
+               padding: 15px;
+               font-size: 18px;
+           }
+           .btn-info {
+               background-color: #17a2b8;
+               border: none;
+               border-radius: 20px;
+               transition: background-color 0.3s;
+           }
+           .btn-info:hover {
+               background-color: #138496;
+           }
+           .search-bar {
+               border-radius: 20px;
+               overflow: hidden;
+               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           }
+           .search-bar input {
+               border: none;
+               box-shadow: none;
+               outline: none;
+           }
+           .search-bar button {
+               border-radius: 0;
+           }
+           .status-icon {
+               font-size: 24px;
+               margin-right: 10px;
+           }
+           .table {
+               margin-top: 30px;
+           }
+           .table th {
+               background-color: #17a2b8;
+               color: white;
+           }
+           .table td {
+               vertical-align: middle;
+           }
+           .table .bi-check-circle-fill {
+               color: #28a745;
+           }
+           .table .bi-hourglass-split {
+               color: #ffc107;
+           }
+           .table .bi-truck {
+               color: #17a2b8;
+           }
+           .table .bi-exclamation-circle-fill {
+               color: #dc3545;
+           }
+           .cargo-details {
+               margin-top: 50px;
+           }
+           .cargo-details h5 {
+               font-size: 18px;
+               color: #17a2b8;
+               margin-bottom: 20px;
+           }
+           .map-container {
+               height: 400px;
+               background: url('https://via.placeholder.com/800x400') no-repeat center center;
+               background-size: cover;
+               margin-top: 30px;
+               border-radius: 15px;
+           }
+           .footer {
+               margin-top: 50px;
+               padding: 20px;
+               background-color: #343a40;
+               color: white;
+               text-align: center;
+               border-radius: 15px;
+           }
+       </style>
+   </head>
+   <body>
+       <div class="container">
+           <div class="card">
+               <div class="card-header">
+                   <i class="bi bi-box-seam"></i> Cargo Status
+               </div>
+               <div class="card-body">
+                   <div class="row mb-4">
+                       <div class="col-md-8">
+                           <div class="input-group search-bar">
+                               <input class="form-control" type="text" [(ngModel)]="cargoIdMd" placeholder="Search Cargo Id">
+                               <div class="input-group-append">
+                                   <button (click)="search()" class="btn btn-info">
+                                       <i class="bi bi-search"></i>
+                                   </button>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <button (click)="search()" class="btn btn-info w-100">
+                               <i class="bi bi-arrow-repeat"></i> Refresh Status
+                           </button>
+                       </div>
+                   </div>
+                   <table class="table table-bordered table-striped">
+                       <thead>
+                           <tr>
+                               <th scope="col">Cargo Id</th>
+                               <th scope="col">Delivery Status</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr>
+                               <td>{{cargo.cargoId}}</td>
+                               <td>
+                                   <i [ngClass]="{
+                                       'bi bi-check-circle-fill': cargo.status === 'Delivered',
+                                       'bi bi-hourglass-split': cargo.status === 'Pending',
+                                       'bi bi-truck': cargo.status === 'In_Transit',
+                                       'bi bi-exclamation-circle-fill': cargo.status === 'Failed'
+                                   }" class="status-icon"></i>
+                                   {{cargo.status}}
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+   
+           <!-- Cargo Details Section -->
+           <div class="cargo-details">
+               <h5><i class="bi bi-info-circle"></i> Cargo Details</h5>
+               <div class="row">
+                   <div class="col-md-6">
+                       <p><strong>Sender Name:</strong> {{cargo.senderName}}</p>
+                       <p><strong>Receiver Name:</strong> {{cargo.receiverName}}</p>
+                       <p><strong>Pickup Address:</strong> {{cargo.pickupAddress}}</p>
+                       <p><strong>Delivery Address:</strong> {{cargo.deliveryAddress}}</p>
+                   </div>
+                   <div class="col-md-6">
+                       <p><strong>Estimated Delivery Date:</strong> {{cargo.estimatedDeliveryDate}}</p>
+                       <p><strong>Weight:</strong> {{cargo.weight}} kg</p>
+                       <p><strong>Dimensions:</strong> {{cargo.dimensions}} cm</p>
+                       <p><strong>Special Instructions:</strong> {{cargo.specialInstructions}}</p>
+                   </div>
+               </div>
+           </div>
+   
+           <!-- Map Section -->
+           <div class="map-container"></div>
+   
+           <!-- Footer -->
+           <div class="footer">
+               <p>&copy; 2024 Cargo Management System. All rights reserved.</p>
+           </div>
+   
+           <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+               <i class="bi bi-exclamation-triangle-fill"></i> {{errorMessage}}
+           </div>
+       </div>
+   
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
+   </html>
+   

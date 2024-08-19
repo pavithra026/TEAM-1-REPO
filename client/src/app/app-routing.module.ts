@@ -9,6 +9,7 @@ import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { AssginCargoComponent } from './assgin-cargo/assgin-cargo.component';
 import { ViewcargostatusComponent } from './viewcargostatus/viewcargostatus.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ShipmentsComponent } from './shipments/shipments.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashbaordComponent },
   { path: 'addcargo', component: RegistrationComponent},  
   { path: 'assgin-cargo', component: AssginCargoComponent },  
-  { path: 'viewcargostatus', component: ViewcargostatusComponent },  
+  { path: 'viewcargostatus', component: ViewcargostatusComponent }, 
+  { path: 'shipments', component: ShipmentsComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {path :'**', component: ErrorPageComponent}
   // { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },

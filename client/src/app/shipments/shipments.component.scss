@@ -1,0 +1,350 @@
+
+// .popup {
+//     position: relative;
+//     display: inline-block;
+//     cursor: pointer;
+//   }
+  
+//   /* The actual popup (appears on top) */
+//   .popup .popuptext {
+//     visibility: hidden;
+//     width: 160px;
+//     background-color: #4CAF50; /* Changed to a green color */
+//     color: #fff;
+//     text-align: center;
+//     border-radius: 6px;
+//     padding: 8px 0;
+//     position: absolute;
+//     z-index: 1;
+//     bottom: 125%;
+//     left: 50%;
+//     margin-left: -80px;
+//   }
+  
+//   /* Popup arrow */
+//   .popup .popuptext::after {
+//     content: "";
+//     position: absolute;
+//     top: 100%;
+//     left: 50%;
+//     margin-left: -5px;
+//     border-width: 5px;
+//     border-style: solid;
+//     border-color: #4CAF50 transparent transparent transparent; /* Changed to match the new background color */
+//   }
+  
+//   /* Toggle this class when clicking on the popup container (hide and show the popup) */
+//   .popup .show {
+//     visibility: visible;
+//     -webkit-animation: fadeIn 1s;
+//     animation: fadeIn 1s;
+//   }
+  
+//   /* Add animation (fade in the popup) */
+//   @-webkit-keyframes fadeIn {
+//     from {opacity: 0;}
+//     to {opacity: 1;}
+//   }
+  
+//   @keyframes fadeIn {
+//     from {opacity: 0;}
+//     to {opacity: 1;}
+//   }
+  
+  
+//   .box ul.pagination {
+//     position: relative; /* Changed from absolute to relative */
+//     bottom: auto;
+//     right: auto;
+//     display: block;
+//     width: 100%;
+//     margin-top: 10px; /* Added some margin to space out the pagination */
+//   }
+  
+//   .box .dvrecords {
+//     display: block;
+//     margin-bottom: 10px;
+//     text-align: center; /* Center align the record and pagination controls */
+//   }
+  
+//   .pagination {
+//     display: flex;
+//     justify-content: center;
+//     padding-left: 0;
+//     list-style: none;
+//     border-radius: 0.25rem;
+//     margin-top: 20px; /* Adds space above pagination */
+//   }
+  
+//   .pagination li {
+//     display: inline-block;
+//     margin: 0 5px; /* Adds spacing between pagination items */
+//   }
+  
+//   .pagination li a {
+//     color: #000; /* Blue color for links */
+//     text-decoration: none;
+//     padding: 5px 10px;
+//     border: 1px solid #dee2e6; /* Border around each page link */
+//     border-radius: 0.25rem;
+//     background-color: #f8f9fa; /* Light background color */
+//     transition: background-color 0.3s ease, color 0.3s ease;
+//   }
+  
+//   .pagination li a:hover {
+//     background-color: #000;
+//     color: white; /* White text on hover */
+//   }
+  
+//   .pagination li.active a {
+//     background-color: #000; /* Active page background */
+//     color: white;
+//     border-color: #000;
+//   }
+  
+//   .pagination li.disabled a {
+//     color: #6c757d; /* Gray color for disabled links */
+//     background-color: #e9ecef;
+//     border-color: #dee2e6;
+//     cursor: not-allowed;
+//   }
+  
+//   .pagination li.disabled a:hover {
+//     background-color: #e9ecef;
+//     color: #6c757d;
+//     border-color: #dee2e6;
+//   }
+// .pagination {
+//     display: flex;
+//     justify-content: center;
+//     padding-left: 0;
+//     list-style: none;
+//     border-radius: 0.5rem; /* Increased border radius */
+//     margin-top: 20px;
+//   }
+  
+//   .pagination li {
+//     display: inline-block;
+//     margin: 0 5px;
+//   }
+  
+//   .pagination li a {
+//     color: #0056b3; /* Deeper blue color */
+//     text-decoration: none;
+//     padding: 8px 12px;
+//     border: 1px solid #dee2e6;
+//     border-radius: 0.5rem; /* Increased border radius */
+//     background-color: #f8f9fa;
+//     transition: background-color 0.3s ease, color 0.3s ease;
+//   }
+  
+//   .pagination li a:hover {
+//     background-color: #0056b3; /* Deeper blue color */
+//     color: white;
+//   }
+  
+//   .pagination li.active a {
+//     background-color: #0056b3; /* Deeper blue color */
+//     color: white;
+//     border-color: #0056b3; /* Deeper blue color */
+//   }
+  
+//   .pagination li.disabled a {
+//     color: #6c757d;
+//     background-color: #e9ecef;
+//     border-color: #dee2e6;
+//     cursor: not-allowed;
+//   }
+  
+//   .pagination li.disabled a:hover {
+//     background-color: #e9ecef;
+//     color: #6c757d;
+//     border-color: #dee2e6;
+//   }
+
+  
+  //css
+//   .cargo-card {
+//     background-color: #1f1f1f;
+//     color: white;
+//     border-radius: 10px;
+//     border: 1px solid #006994;
+//     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+//   }
+  
+//   .cargo-card:hover {
+//     transform: scale(1.03);
+//     box-shadow: 0 0 15px rgba(0, 105, 148, 0.5);
+//   }
+  
+//   .card-title {
+//     font-size: 1.25rem;
+//   }
+  
+//   .status-badge {
+//     padding: 0.4em 0.6em;
+//     font-size: 0.8rem;
+//     border-radius: 10px;
+//     text-transform: uppercase;
+//   }
+  
+//   .status-badge.delivered {
+//     background-color: #28a745;
+//   }
+  
+//   .status-badge.pending {
+//     background-color: #ffc107;
+//     color: black;
+//   }
+  
+//   .status-badge.in-transit {
+//     background-color: #17a2b8;
+//   }
+  
+//   .search-filter .input-group-text,
+//   .search-filter .form-control {
+//     border-color: #006994;
+//   }
+  
+//   .pagination .page-link {
+//     color: #006994;
+//     border-radius: 50px;
+//   }
+  
+//   .pagination .page-item.active .page-link {
+//     background-color: #006994;
+//     color: white;
+//     border-color: #006994;
+//   }
+  
+//   .modal-content {
+//     background-color: #2a2a2a;
+//     color: white;
+//   }
+  
+//   .modal-header {
+//     border-bottom: 1px solid #006994;
+//   }
+  
+//   .modal-footer .btn-outline-secondary {
+//     border-color: #006994;
+//     color: #006994;
+//   }
+  
+//   .modal-footer .btn-primary {
+//     background-color: #006994;
+//     border-color: #006994;
+//   }
+/* Search and Filter Section */
+/* Search and Filter Section *//* Search and Filter Section */
+.search-filter .input-group-text {
+    background-color: transparent; /* No background color */
+    color: black; /* Black icon color */
+    border: 1px solid #006994; /* Border color */
+  }
+  
+  .search-filter .form-control {
+    border: 1px solid #006994; /* Border color */
+    background-color: #fff; /* White background */
+    color: #000; /* Black text color */
+  }
+  
+  .search-filter .form-control::placeholder {
+    color: #6c757d; /* Placeholder text color */
+  }
+  
+  .search-filter .form-select {
+    border: 1px solid #006994; /* Border color */
+    background-color: #fff; /* White background */
+    color: #000; /* Black text color */
+  }
+  
+  /* Card Design */
+  .cargo-card {
+    background-color: #1f1f1f; /* Dark border around the card */
+    border-radius: 10px;
+    border: 1px solid #006994; /* Sea blue border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .cargo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 105, 148, 0.5);
+  }
+  
+  .cargo-card .card-body {
+    background-color: #fff; /* White background for the card body */
+    color: #000; /* Black text color */
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .status-badge {
+    padding: 0.4em 0.6em;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+  
+  .status-badge.delivered {
+    background-color: #28a745;
+  }
+  
+  .status-badge.pending {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .status-badge.in-transit {
+    background-color: #17a2b8;
+  }
+  
+  /* Pagination */
+  .pagination .page-link {
+    color: #006994;
+    border-radius: 50px;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #006994;
+    color: white;
+    border-color: #006994;
+  }
+  
+  /* Modal Design */
+.modal-content {
+    background-color: #fff; /* White background for modal */
+    color: #000; /* Black text color */
+    border-radius: 10px; /* Rounded corners for the modal */
+    border: 1px solid #006994; /* Sea blue border */
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #006994; /* Sea blue border at the bottom of the header */
+    background-color: #006994; /* Light background color for header */
+    color: #fff; /* Black text color */
+  }
+  
+  .modal-footer .btn-secondary {
+    border-color: #006994; /* Sea blue border */
+    color: #006994; /* Sea blue text color */
+  }
+  
+  .modal-footer .btn-primary {
+    background-color: #006994; /* Sea blue background */
+    border-color: #006994; /* Sea blue border */
+    color: #fff; /* White text color */
+  }
+  
+  .alert-success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text color */
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text color */
+  }
+  

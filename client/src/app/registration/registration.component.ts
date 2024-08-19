@@ -58,7 +58,7 @@ onRegister()
     this.showMessage=false;
     this.httpService.registerUser(this.itemForm.value).subscribe(data=>{
       this.showMessage=true;
-      this.responseMessage='Welcome '+data.name +" you are successfully registered";
+      this.responseMessage='Hi '+data.name +", you have successfully registered!";
       this.itemForm.reset();
       
     },error=>{

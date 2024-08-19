@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,6 +23,10 @@ export class AssginCargoComponent {
   paginatedCargoList: any = []; // This will hold the items for the current page
   currentPage: number = 1; // Current page number
   itemsPerPage: number = 3; // Number of items per page
+
+
+  searchQuery: string = ''; // Search query
+  selectedStatus: string = ''; // Selected status for sorting 
  
   constructor(public router:Router, public httpService:HttpService, private formBuilder: FormBuilder, private authService:AuthService)
   {
@@ -35,7 +38,6 @@ export class AssginCargoComponent {
       this.getDriverIdByUserId(this.userId); // Retrieve the driver ID
     }
    this.statusModel.newStatus=null;
-   this.getAssginCargo()
   }
   getDriverIdByUserId(userId: number): void {
     this.httpService.getDriverIdByUserId(userId).subscribe(
@@ -60,7 +62,7 @@ export class AssginCargoComponent {
       console.log(this.cargList);
     }, error => {
       // Handle error
-      // this.showError = true;
+      this.showError = true;
       this.errorMessage = "An error occurred while logging in. Please try again later.";
       console.error('Login error:', error);
     });;
@@ -68,9 +70,25 @@ export class AssginCargoComponent {
 
   
   updatePaginatedCargoList() {
+    let filteredCargo = this.cargList;
+
+    if (this.searchQuery) {
+      filteredCargo = filteredCargo.filter((cargo: any) =>
+        cargo.content.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        cargo.id.toString().includes(this.searchQuery) ||
+        cargo.business.name.toString().toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+
+    if (this.selectedStatus) {
+      filteredCargo = filteredCargo.filter((cargo: any) =>
+        cargo.status === this.selectedStatus
+      );
+    }
+
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedCargoList = this.cargList.slice(startIndex, endIndex);
+    this.paginatedCargoList = filteredCargo.slice(startIndex, endIndex);
   }
  
   goToPage(page: number) {
@@ -108,4 +126,3 @@ export class AssginCargoComponent {
  
  
 }
- 
