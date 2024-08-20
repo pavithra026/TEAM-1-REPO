@@ -209,7 +209,7 @@
       </div>
   </div>
 </div> -->
-
+<!-- 
 <div class="vh-100 d-flex justify-content-center align-items-center bg-light m-0">
   <div class="container">
       <div class="row d-flex justify-content-center">
@@ -285,4 +285,77 @@
   </div>
 </div>
 
-
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+      <form [formGroup]="itemForm" (ngSubmit)="onRegister()">
+        <h5>Register</h5>
+        <div class="input-box">
+          <input type="text" placeholder="Username" formControlName="username" id="username">
+          <i class='bx bxs-user'></i>
+          <div *ngIf="itemForm.get('username')?.invalid && (itemForm.get('username')?.dirty || itemForm.get('username')?.touched)" class="ng-dirty">
+            <span class="text-danger" style="font-size: 0.75rem;">Please Enter UserName.</span>
+        </div>
+        </div>
+        <div class="input-box">
+          <input type="email" placeholder="Email" formControlName="email" id="email">
+          <i class='bx bxs-envelope'></i>
+            <div *ngIf="itemForm.get('email')?.hasError('required') && (itemForm.get('email')?.dirty || itemForm.get('email')?.touched)" class="ng-dirty">
+                <span class="text-danger" style="font-size: 0.75rem;">Please Enter email.</span>
+            </div>
+            <div>
+                <small
+                *ngIf="itemForm.get('email')?.hasError('invalidEmail') &&  itemForm.get('email')?.dirty && itemForm.get('email')?.touched && itemForm.get('password')?.value"
+                class="text-danger" style="font-size: 0.75rem;">Enter a Valid Email.
+                </small>
+            </div>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" formControlName="password" id="password">
+          <i class='bx bxs-lock-alt'></i>
+          <div *ngIf="itemForm.get('password')?.hasError('required') && (itemForm.get('password')?.dirty || itemForm.get('password')?.touched)" class="ng-dirty">
+                <span class="text-danger" style="font-size: 0.75rem;">Please Enter password.</span>
+            </div>
+            <div>
+            <span 
+                *ngIf="itemForm.get('password')?.hasError('invalidPassword') && itemForm.get('password')?.dirty && itemForm.get('password')?.touched && itemForm.get('password')?.value"
+                class="text-danger" style="font-size: 0.75rem;">1 uppercase, lowercase, digit , special character is required.
+            </span>
+            </div>
+        </div>
+        <div>
+          <select formControlName="role" id="role" class="drop-down text-white">
+            <option value="null">Select Role</option>
+            <option value="BUSINESS">Business</option>
+            <option value="DRIVER">Driver</option>
+            <option value="CUSTOMER">Customer</option>
+          </select>
+          <div *ngIf="itemForm.controls['role'].invalid && (itemForm.controls['role'].dirty || itemForm.controls['role'].touched)"
+               class="ng-dirty">
+            <span *ngIf="itemForm.controls['role'].errors">
+              <small class="text-danger">*Role is required</small>
+            </span>
+          </div>
+        </div>
+        <button type="submit" class="btn mt-4">Register</button>
+        <div class="register-link">
+          <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>
+        </div>
+      </form>
+      <div *ngIf="showMessage" class="alert alert-success mt-3" role="alert" style="font-size: 0.875rem;">
+        {{responseMessage}}
+    </div>
+    <div *ngIf="showError" class="alert alert-danger mt-3" role="alert" style="font-size: 0.875rem;">
+        {{errorMessage}}
+    </div>
+    </div>
+</body>
+</html>

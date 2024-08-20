@@ -60,88 +60,187 @@
     </div>
   </div>
    -->
-
    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargo Status</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .card {
-            margin-top: 20px;
-        }
-        .card-header {
-            /* background-color: #007bff; */
-            color: white;
-        }
-        .btn-primary {
-            background-color: #4c9ef4;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="card-header bg-info d-flex justify-content-between mt-4">
-            <h6 class="mb-0">Cargo Status</h6>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header bg-info">
-                        Search Cargo
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input class="form-control" type="text" [(ngModel)]="cargoIdMd" placeholder="Search Cargo Id">
-                            </div>
-                            <div class="col-md-2">
-                                <button (click)="search()" class="btn btn-info w-100">Search</button>
-                            </div>
-                        </div>
-                        <!-- <div class="mt-5">
-                            <h3>Cargo Id: {{cargo.cargoId}}</h3>
-                            <h3>Delivery Status: {{cargo.status}}</h3>
-                        </div> -->
-                        <div class="mt-5">
-                          <table class="table table-bordered table-striped">
-                              <thead class="thead">
-                                  <tr>
-                                      <th scope="col">Cargo Id</th>
-                                      <th scope="col">Delivery Status</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>{{cargo.cargoId}}</td>
-                                      <td>{{cargo.status}}</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                      
-                    </div>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Cargo Status</title>
+       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+       <style>
+           body {
+               font-family: Arial, sans-serif;
+           }
+           .container {
+              margin-top: 30px;
+           }
+           .timeline {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               position: relative;
+               padding: 40px 0;
+               margin: 0 auto;
+               width: 100%;
+               max-width: 1000px;
+           }
+           .timeline::before {
+               content: '';
+               position: absolute;
+               top: 50%;
+               left: 0;
+               right: 0;
+               height: 4px;
+               background-color: #d3d3d3;
+               z-index: 1;
+               transition: background-color 0.3s ease;
+           }
+           .timeline-step {
+               position: relative;
+               text-align: center;
+               width: 20%;
+               z-index: 2;
+           }
+           .timeline-step .dot {
+               width: 24px;
+               height: 24px;
+               background-color: #d3d3d3;
+               border-radius: 50%;
+               margin: 0 auto;
+               transition: background-color 0.3s ease, transform 0.3s ease;
+           }
+           .timeline-step .icon {
+               font-size: 14px;
+               color: #fff;
+               line-height: 24px;
+           }
+           .timeline-step .label {
+               margin-top: 10px;
+               font-size: 14px;
+               color: #555;
+           }
+           .timeline-step.active .dot,
+           .timeline-step.completed .dot {
+               background-color: #28a745;
+               transform: scale(1.2);
+           }
+           .timeline-step.pending .dot {
+               background-color: #ffc107;
+           }
+           .timeline-step.intransit .dot {
+               background-color: #17a2b8;
+           }
+           .timeline-step.delivered .dot {
+               background-color: #28a745;
+           }
+           .timeline .progress {
+               position: absolute;
+               top: 50%;
+               left: 0;
+               height: 4px;
+               background-color: #28a745;
+               z-index: 1;
+               transition: width 0.3s ease;
+           }
+           .search-bar {
+               margin-bottom: 20px;
+           }
+           .card-body h4 {
+               margin-top: 20px;
+               font-size: 1.2rem;
+           }
+           .map-container {
+               margin-top: 30px;
+               height: 300px;
+               background-color: #ddd;
+               border-radius: 10px;
+           }
+           .footer {
+               text-align: center;
+               margin-top: 40px;
+               font-size: 0.9rem;
+               color: #888;
+           }
+       </style>
+   </head>
+   <body>
+   
+       <div class="container mt-3">
+           <!-- Search Bar and Cargo Info -->
+           <div class="card shadow">
+               <div class="card-body">
+                   <div class="row search-bar">
+                       <div class="col-md-8">
+                           <div class="input-group">
+                               <input class="form-control" type="text" [(ngModel)]="cargoIdMd" placeholder="Search Cargo Id">
+                               <div class="input-group-append">
+                                   <button (click)="search()" class="btn btn-dark">
+                                       <i class="bi bi-search"></i>
+                                   </button>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                           <button (click)="search()" class="btn btn-dark w-100">
+                               <i class="bi bi-arrow-repeat"></i> Refresh Status
+                           </button>
+                       </div>
+                   </div>
+                   
+                   <p><strong>Cargo ID: </strong> {{cargo.cargoId}}</p>
+                   <p><strong>Shipment Status: </strong>  <span class="badge bg-info text-white">{{cargo.status}}</span></p>
+                   <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i> {{errorMessage}}
                 </div>
+               </div>
+           </div>
+   
+           <!-- Timeline -->
+           <div class="timeline">
+            <div class="progress" [style.width]="progressWidth"></div>
+            
+            <div class="timeline-step pending" [class.active]="cargo.status === 'Pending' || cargo.status === 'In Transit' || cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-hourglass-split icon"></i></div>
+                <div class="label">Pending</div>
+            </div>
+            <div class="timeline-step intransit" [class.active]="cargo.status === 'In Transit' || cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-truck icon"></i></div>
+                <div class="label">In Transit</div>
+            </div>
+            <div class="timeline-step delivered" [class.active]="cargo.status === 'Delivered'">
+                <div class="dot"><i class="bi bi-box-seam icon"></i></div>
+                <div class="label">Delivered</div>
             </div>
         </div>
-
-        <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
-            {{errorMessage}}
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        
+   
+           <!-- Cargo Details Section -->
+           <div class="card shadow mt-4 mb-4">
+               <div class="card-body">
+                   <h5><i class="bi bi-info-circle"></i> Cargo Details</h5>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <p><strong>Sender Name:</strong> {{cargo.senderName}}</p>
+                           <p><strong>Receiver Name:</strong> {{cargo.receiverName}}</p>
+                           <p><strong>Pickup Address:</strong> {{cargo.pickupAddress}}</p>
+                       </div>
+                       <div class="col-md-6">
+                           <p><strong>Estimated Delivery Date:</strong> {{cargo.estimatedDeliveryDate}}</p>
+                           <p><strong>Delivery Address:</strong> {{cargo.deliveryAddress}}</p>
+                           <p><strong>Special Instructions:</strong> {{cargo.specialInstructions}}</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+   
+           <!-- Footer -->
+       </div>
+   
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </body>
+   </html>
+   
+   

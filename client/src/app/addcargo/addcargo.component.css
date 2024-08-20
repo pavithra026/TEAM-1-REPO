@@ -1,117 +1,57 @@
 
 .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  /* The actual popup (appears on top) */
-  .popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #4CAF50; /* Changed to a green color */
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-  }
-  
-  /* Popup arrow */
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #4CAF50 transparent transparent transparent; /* Changed to match the new background color */
-  }
-  
-  /* Toggle this class when clicking on the popup container (hide and show the popup) */
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-  }
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  
-  
-  .box ul.pagination {
-    position: relative; /* Changed from absolute to relative */
-    bottom: auto;
-    right: auto;
-    display: block;
-    width: 100%;
-    margin-top: 10px; /* Added some margin to space out the pagination */
-  }
-  
-  .box .dvrecords {
-    display: block;
-    margin-bottom: 10px;
-    text-align: center; /* Center align the record and pagination controls */
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    padding-left: 0;
-    list-style: none;
-    border-radius: 0.25rem;
-    margin-top: 20px; /* Adds space above pagination */
-  }
-  
-  .pagination li {
-    display: inline-block;
-    margin: 0 5px; /* Adds spacing between pagination items */
-  }
-  
-  .pagination li a {
-    color: #000; /* Blue color for links */
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid #dee2e6; /* Border around each page link */
-    border-radius: 0.25rem;
-    background-color: #f8f9fa; /* Light background color */
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .pagination li a:hover {
-    background-color: #000;
-    color: white; /* White text on hover */
-  }
-  
-  .pagination li.active a {
-    background-color: #000; /* Active page background */
-    color: white;
-    border-color: #000;
-  }
-  
-  .pagination li.disabled a {
-    color: #6c757d; /* Gray color for disabled links */
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-    cursor: not-allowed;
-  }
-  
-  .pagination li.disabled a:hover {
-    background-color: #e9ecef;
-    color: #6c757d;
-    border-color: #dee2e6;
-  }
-  
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.card-header{
+  background-color: #36454f;
+}
+.btn {
+  background-color: #36454f;
+}
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #4CAF50; /* Changed to a green color */
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4CAF50 transparent transparent transparent; /* Changed to match the new background color */
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

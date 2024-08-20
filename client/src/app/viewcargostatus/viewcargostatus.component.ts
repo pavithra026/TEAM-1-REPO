@@ -18,7 +18,18 @@ export class ViewcargostatusComponent {
   {
 
   }
-
+  get progressWidth() {
+    switch (this.cargo.status) {
+        case 'Pending':
+            return '10%'; // Set 1/3 width for Pending
+        case 'In_Transit':
+            return '53%'; // Set 2/3 width for In Transit
+        case 'Delivered':
+            return '100%'; // Set full width for Delivered
+        default:
+            return '0%'; // Default to no progress if status is unknown
+    }
+}
   search()
   {
     this.showError = false;

@@ -2,17 +2,14 @@
 
 
 <div *ngIf="roleName === 'BUSINESS'">
-    <app-navbar></app-navbar>
     <app-addcargo></app-addcargo>
   </div>
   <div *ngIf="roleName === 'DRIVER'">
-    <app-navbar></app-navbar>
     <app-assgin-cargo></app-assgin-cargo>
 
   </div>
 
   <div *ngIf="roleName === 'CUSTOMER'">
-    <app-navbar></app-navbar>
     <app-viewcargostatus></app-viewcargostatus>
 
   </div>

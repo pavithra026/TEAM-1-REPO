@@ -1,118 +1,99 @@
-<!-- <div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-          <div class="border border-3 border-primary"></div>
-          <div class="card bg-white">
-            <div class="card-body p-5">
-              <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onLogin()">
-                <h4 class="fw-bold mb-2 text-uppercase ">
-                   LOGISTIC MANAGEMENT SYSTEM
-                </h4>
-                <p class=" mb-5">Please enter your user and password!</p>
-                <div class="mb-3">
-                  <label for="username" class="form-label ">Username</label>
-                  <input type="username" name ="username"formControlName="username" [(ngModel)]="formModel.username" class="form-control" id="username" placeholder="name@example.com">
-                  <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
-                  class="ng-dirty">
-                  <span *ngIf="itemForm.controls['username'].errors">
-                    <span class="text-danger">Please Enter username .</span>
-                  </span>
-                </div>
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label ">Password</label>
-                  <input type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="*******">
-                  <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
-                  class="ng-dirty">
-                  <span *ngIf="itemForm.controls['password'].errors">
-                    <span class="text-danger">Please Enter password .</span>
-                  </span>
-                </div>
-                </div>
-  
-                <div class="d-grid">
-                  <button class="btn btn-outline-dark" type="submit">Login</button>
-                </div>
-              </form>
-              <div>
-                <p class="mb-0  text-center">Don't have an account? <a (click)="registration()"
-                    class="text-primary fw-bold">Registration</a></p>
-              </div>
-              <div *ngIf="showError" class="alert alert-danger" role="alert">
-                {{errorMessage}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+<!-- 
 
-  <!DOCTYPE html>
-<html>
-
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form | Dan Aleko</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-    <div class="login-dark">
-        <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
-          <div class="form-container">
-            <h2 class="sr-only">Login Form</h2>
-          <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-          <div class="form-group">
-            <input class="form-control" type="username" name ="username"formControlName="username" [(ngModel)]="formModel.username" class="form-control" id="username" placeholder="Username">
-            <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
+  <div class="wrapper">
+    <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" type="username" name ="username" formControlName="username" [(ngModel)]="formModel.username" id="username">
+        <i class='bx bxs-user'></i>
+        <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
                 class="ng-dirty">
                 <span *ngIf="itemForm.controls['username'].errors">
                   <small class="text-danger">*username is required</small>
                 </span>
             </div>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="Password">
-            <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
-                class="ng-dirty">
-                <span *ngIf="itemForm.controls['password'].errors">
-                  <small class="text-danger">*password is required</small>
-                </span>
-              </div>
-          </div>
-          <div class="form-group">
-            <!-- <button class="btn btn-primary btn-block" type="submit">Log In</button> -->
-           
-<button class="animated-button" type="submit">
-  <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-    ></path>
-  </svg>
-  <span class="text">Login</span>
-  <span class="circle"></span>
-  <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-    ></path>
-  </svg>
-</button>
-
-          </div>
-          <p class="forgot">Don't have an account? <a (click)="registration()"><u>Sign In</u></a></p>
-          <div *ngIf="showError" class="alert alert-danger" role="alert">
-            {{errorMessage}}
-          </div>
-          </div>
-          
-       </form>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+      </div>
+      <div class="input-box">
+        <input type="password" type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="password">
+        <i class='bx bxs-lock-alt' ></i>
+        <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
+          class="ng-dirty">
+          <span *ngIf="itemForm.controls['password'].errors">
+            <small class="text-danger">*password is required</small>
+          </span>
+        </div>
+      </div>
+      <div class="remember-forgot mt-2">
+        <label><input type="checkbox">Remember Me</label>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Dont have an account? <a (click)="registration()">Register</a></p>
+      </div>
+    </form>
+  </div>
 </body>
+</html> -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="container-c">
+    <video autoplay loop [muted]="true" plays-inline class="background-clip" oncanplay="this.parentElement.classList.add('video-loaded')">
+      <source src="/assets/loginmp4.mp4" type="video/mp4">
+    </video>
+    <div class="wrapper">
+      <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input type="text" placeholder="Username" type="username" name ="username" formControlName="username" [(ngModel)]="formModel.username" id="username">
+          <i class='bx bxs-user'></i>
+          <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
+                  class="ng-dirty">
+                  <span *ngIf="itemForm.controls['username'].errors">
+                    <small class="text-danger">*username is required</small>
+                  </span>
+              </div>
+        </div>
+        <div class="input-box">
+          <input type="password" type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="password">
+          <i class='bx bxs-lock-alt' ></i>
+          <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
+            class="ng-dirty">
+            <span *ngIf="itemForm.controls['password'].errors">
+              <small class="text-danger">*password is required</small>
+            </span>
+          </div>
+        </div>
+        <div class="remember-forgot mt-2">
+          <label><input type="checkbox">Remember Me</label>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="register-link">
+          <p>Dont have an account? <a (click)="registration()">Register</a></p>
+        </div>
+      </form>
+      <div *ngIf="showError" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
+  
+</body>
 </html>

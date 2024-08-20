@@ -1,0 +1,322 @@
+.carousel-item {
+    height: 500px; /* Set your desired height here */
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+
+  .custom-caption {
+    position: absolute;
+    top: 30%; /* Adjust top as needed */
+    left: 10%;
+    width: 80%; /* Ensure it is centered */
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    text-align: left;
+}
+
+/* Animation for first slide on load */
+.carousel-item.active .custom-caption.initial-load {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Normal transition for subsequent slides */
+.carousel-item.active .custom-caption {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Add this to trigger animation for first slide */
+.carousel-item.active .custom-caption.initial-load {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+//button css
+/* From Uiverse.io by satyamchaudharydev */ 
+/* === removing default button style ===*/
+.button {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* button styling */
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+  }
+  /* this is the text, when you hover on button */
+  .hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: rgb(0, 179, 255);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+  }
+  /* hover */
+  .button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+  }
+
+  h1{
+    font-weight: 500;
+
+  }
+  p{
+    font-size: large;
+    font-weight: lighter;
+  }
+.service-text{
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+
+  //service btn css
+
+  /* From Uiverse.io by faizanullah1999 */ 
+.primary-button {
+  font-family: 'Ropa Sans', sans-serif;
+     /* font-family: 'Valorant', sans-serif; */
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  border: 1px solid #0E1822;
+  padding: 0.8rem 2.1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 /* fill: %230E1822; */ %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  background-color: #00cddc;
+  background-size: 200%;
+  background-position: 200%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in-out;
+  transition-property: background-position, border, color;
+  position: relative;
+  z-index: 1;
+ }
+ 
+ .primary-button:hover {
+  border: 1px solid #FF4655;
+  color: white;
+  background-position: 40%;
+ }
+ 
+ .primary-button:before {
+  content: "";
+  position: absolute;
+  background-color: #0E1822;
+  width: 0.2rem;
+  height: 0.2rem;
+  top: -1px;
+  left: -1px;
+  transition: background-color 0.15s ease-in-out;
+ }
+ 
+ .primary-button:hover:before {
+  background-color: white;
+ }
+ 
+ .primary-button:hover:after {
+  background-color: white;
+ }
+ 
+ .primary-button:after {
+  content: "";
+  position: absolute;
+  background-color: #FF4655;
+  width: 0.3rem;
+  height: 0.3rem;
+  bottom: -1px;
+  right: -1px;
+  transition: background-color 0.15s ease-in-out;
+ }
+ 
+ .button-borders {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+ }
+ 
+ .button-borders:before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  top: -0.3em;
+  border: 1px solid #ffffff;
+  border-bottom: 0px;
+     /* opacity: 0.3; */
+ }
+ 
+ .button-borders:after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  height: 50%;
+  left: -0.3em;
+  bottom: -0.3em;
+  border: 1px solid #ffffff;
+  border-top: 0px;
+     /* opacity: 0.3; */
+  z-index: 0;
+ }
+ 
+ .shape {
+  fill: #0E1822;
+ }
+ 
+ .recent-news{
+  display: flex;
+  justify-content: space-evenly;
+ }
+
+ 
+
+ .card{
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+ }
+
+ .card .card-img-top{
+  border-radius: 0 !important;
+ }
+.img-slider{
+  filter: brightness(70%);
+}
+.recent-news-img {
+  filter: brightness(70%);
+  transition: filter 0.6s ease; /* Add this line */
+}
+ 
+.recent-news-img:hover {
+  filter: brightness(110%);
+}
+
+.card .card-text{
+
+font-family: "Questrial", sans-serif;
+font-weight: 400;
+font-style: normal;
+  
+}
+h5{
+  font-family: "Questrial", sans-serif;
+  font-weight: bold;
+}
+
+// .container, .our-services{
+ 
+// }
+
+
+//left and right
+.left{
+  background: url("../../assets/left.png");
+}
+.right{
+  background: url("../../assets/right.png");
+}
+.container-2{
+  display: flex;
+}
+
+
+//service css
+.our-services{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.our-services .services{
+  padding: 4rem;
+}
+
+
+
+
+
+
+
+//gallery css
+
+
+
+//map css
+.global-influence-section {
+  margin-top: 4rem;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  // padding: 60px 0;
+  text-align: center;
+}
+.global-influence-section h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+.global-influence-section p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+.embed-responsive {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.embed-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+//count css
+.counter-container {
+  text-align: center;
+  margin: 0 20px;
+}
+.counter {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+//key metrics 
+.key-metrics, .global-influence-section, .gallery-cont{
+  margin-top: 8rem;
+}
