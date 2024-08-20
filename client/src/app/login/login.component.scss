@@ -237,6 +237,9 @@ margin-right: 5rem;
 .register-link p a:hover{
   text-decoration: underline;
 } */
+.alert{
+  padding: 0.5rem;
+}
 
 *{
   margin: 0;
@@ -246,7 +249,7 @@ margin-right: 5rem;
 }
 
 body {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -255,7 +258,7 @@ body {
 .container-c {
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   background-color: rgba(0, 0, 0, .4);
   display: flex;

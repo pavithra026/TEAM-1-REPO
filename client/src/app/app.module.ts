@@ -20,6 +20,7 @@ import { GlobalErrorHandler } from '../services/global-error-handler.service';
 import { Navbar } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ShipmentsComponent } from './shipments/shipments.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShipmentsComponent } from './shipments/shipments.component';
       ErrorPageComponent,
       Navbar,
       HomeComponent,
-      ShipmentsComponent
+      ShipmentsComponent,
+      FooterComponent
       
       
   ],

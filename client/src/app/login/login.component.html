@@ -89,6 +89,9 @@
           <p>Dont have an account? <a (click)="registration()">Register</a></p>
         </div>
       </form>
+      <div *ngIf="showError" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
     </div>
   </div>
   
