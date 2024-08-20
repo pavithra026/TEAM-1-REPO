@@ -53,15 +53,14 @@
         <li class="nav-item" *ngIf="roleName === 'BUSINESS'">
             <a class="nav-link" [routerLink]="['/dashboard']">New Shipment</a>
             <a class="nav-link" [routerLink]="['/shipments']">Cargo Assignments</a>
-            <a class="nav-link "><i class="fas fa-user"></i>Profile</a>
         </li>
         <li class="nav-item" *ngIf="roleName === 'DRIVER'">
             <a class="nav-link" [routerLink]="['/dashboard']">Assigned Loads</a>
-            <a class="nav-link "><i class="fas fa-user"></i>Profile</a>
+
         </li>
         <li class="nav-item" *ngIf="roleName === 'CUSTOMER'">
             <a class="nav-link" [routerLink]="['/dashboard']">Track Orders</a>
-            <a class="nav-link "><i class="fas fa-user"></i>Profile</a>
+
         </li>
         <li class="nav-item" *ngIf="!IsLoggin">
             <a class="nav-link" [routerLink]="['/login']">
