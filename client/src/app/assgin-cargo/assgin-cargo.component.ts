@@ -103,6 +103,13 @@ export class AssginCargoComponent {
   addStatus(value:any)
   {
     this.statusModel.cargoId=value.id
+    this.clearMessages();
+  }
+  clearMessages() {
+    this.showMessage = false;
+    this.showError = false;
+    this.responseMessage = '';
+    this.errorMessage = '';
   }
   assignDriver()
   {

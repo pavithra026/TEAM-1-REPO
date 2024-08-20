@@ -2,6 +2,7 @@ package com.wecp.logisticsmanagementandtrackingsystem.Controller;
 
 
 import com.wecp.logisticsmanagementandtrackingsystem.dto.CargoStatusResponse;
+import com.wecp.logisticsmanagementandtrackingsystem.entity.Cargo;
 import com.wecp.logisticsmanagementandtrackingsystem.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,16 @@ public class CustomerController {
 
         if (cargoStatusResponse != null) {
             return ResponseEntity.ok(cargoStatusResponse);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+    @GetMapping("/cargo-details")
+    public ResponseEntity<Cargo> getCargo(@RequestParam Long cargoId) {
+        Cargo cargo = customerService.getCargo(cargoId);
+
+        if (cargo != null) {
+            return ResponseEntity.ok(cargo);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

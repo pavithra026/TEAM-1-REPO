@@ -22,6 +22,13 @@ export class HttpService {
     headers = headers.set('Authorization', `Bearer ${authToken}`)
     return this.http.get(this.serverName+`/api/customer/cargo-status?cargoId=`+cargoId,{headers:headers});
   }
+  getCargoDetails(cargoId:any):Observable<any> {
+    const authToken = this.authService.getToken();
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${authToken}`)
+    return this.http.get(this.serverName+`/api/customer/cargo-details?cargoId=`+cargoId,{headers:headers});
+  }
   getDriverIdByUserId(userId: number): Observable<number> {
     const authToken = this.authService.getToken();
     let headers = new HttpHeaders();

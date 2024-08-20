@@ -96,6 +96,14 @@ export class ShipmentsComponent{
   addDriver(value:any)
     {
       this.assignModel.cargoId=value.id
+      this.clearMessages();
+    }
+    clearMessages() {
+      this.showMessage = false;
+      this.showError = false;
+      this.responseMessage = '';
+      this.errorMessage = '';
+   
     }
     assignDriver()
     {

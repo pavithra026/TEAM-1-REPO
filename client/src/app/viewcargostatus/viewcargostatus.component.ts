@@ -14,6 +14,7 @@ export class ViewcargostatusComponent {
   showError:any;
   errorMessage: any;
   cargoIdMd:any;
+  cargoDetails:any={}
   constructor(public router:Router, public httpService:HttpService, private formBuilder: FormBuilder, private authService:AuthService) 
   {
 
@@ -40,12 +41,22 @@ export class ViewcargostatusComponent {
       this.httpService.getOrderStatus(this.cargoIdMd).subscribe((data: any) => {
         this.cargo=data;
         console.log(this.cargo);
-      }, error => {
+      }
+      , error => {
         // Handle error
         this.showError = true;
         this.errorMessage = "An error occurred while searching in. Please try again later or no record found";
         console.error('Login error:', error);
-      });;
+      })
+      this.httpService.getCargoDetails(this.cargoIdMd).subscribe((data)=>{
+        this.cargoDetails=data;
+      },
+      error => {
+        // Handle error
+        this.showError = true;
+        this.errorMessage = "An error occurred while getting cargo by id. Please try again later or no record found";
+        console.error('Login error:', error);
+      })
     }
      
     
