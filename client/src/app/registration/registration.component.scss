@@ -8,14 +8,14 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
     background: url('/assets/login-bg.jpeg') no-repeat;
     background-size: cover;
     background-position: center;
   }
   .wrapper{
     width: 420px;
-    height: 90vh;
+    height: 100vh;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(9px);
